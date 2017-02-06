@@ -1,4 +1,3 @@
-
 // installation du module mongodb par: npm install MongoDB
 var mongodb= require('mongodb');// chargement module mongodb
 // installation du module mongodb par: npm install express
@@ -17,6 +16,9 @@ MongoClient.connect(url, function (err, db) {
   app.get('/',function(req,res){
      res.send('HELLOOO');
    });
+//crée une route a /public et donne acces au fichier qui a dans repertoire client
+   app.use('/public', exp.static('../client'));
+
   console.log('connexion etablie')
 // code qui exploite la base db
 // la collection de la base données est : client
@@ -58,6 +60,6 @@ MongoClient.connect(url, function (err, db) {
 		      if(!err) console.log('Ok!')
 		   }
 	  )*/
-	  
+
 var server = app.listen(8888)// démarrer l'appli sur le port 8888 si vous voulez, vous pouvez mettre n'importe quel port
 //server.close();
