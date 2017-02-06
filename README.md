@@ -6,7 +6,7 @@
   ```sh
  mongorestore.exe dump
   ```
-- installer nodejs
+- installer nodejs npm
 - installer express
 - dans `bin/` où a été installé MongoDB lancer le serveur mongod.exe, mongo.exe 
 - dans le repertoire git du projet preditcion_proto/server/, ouvrir un invité de commande et lancer :
