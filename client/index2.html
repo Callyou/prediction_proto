@@ -9,10 +9,10 @@
   <div ng-app="myApp" ng-controller="planetController">
     <ul>
     Nom des clients
-      <li ng-repeat="x in names">
-        {{ x.name + ', ' + x._id + ', ' + x['sub-type'] }}
+      <li ng-repeat="client in clients">
+        {{ client.name + ', ' + client._id + ', ' + client['sub-type'] }}
         <p>
-          {{x.price}}
+          {{client.price}}
       </li>
     </ul>
   </div>
