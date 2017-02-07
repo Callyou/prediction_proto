@@ -6,14 +6,45 @@
 </head>
 
 <body>
-  <div ng-app="myApp" ng-controller="planetController">
+  <div ng-app="myApp" ng-controller="clientController">
     <ul>
-    Nom des clients
+    Clients
       <li ng-repeat="client in clients">
         {{ client.name + ', ' + client._id + ', ' + client['sub-type'] }}
         <p>
           {{client.price}}
       </li>
+      <p>
+        <div ng-app="myApp" ng-controller="userController">
+          <ul>
+          Utilisateurs
+            <li ng-repeat="user in users">
+              {{user._id}}
+              {{user.first_name}}
+              {{user.last_name}}
+              {{user.mail}}
+              {{user.pswd}}
+            </li>
+            <p>
+              <div ng-app="myApp" ng-controller="messageController">
+                <ul>
+                Messages envoyés par les clients aux utilisateurs mobile et web
+                  <li ng-repeat="message in messages">
+                    {{message._id}}
+                    {{message.clientId}}
+                    {{message.isSurvey}}
+                    {{message.title}}
+                    {{message.textQuestion}}
+                    {{message.dueDate}}
+                    {{message.deliveryDate}}
+                    {{message.creationDate}}
+                    {{message.nbPull}}
+                    {{message.answer}}
+                    {{message.stat}}
+                    {{message.estimation}}
+                    {{message.feedBack}}
+                    {{message.successRate}}
+                  </li>
     </ul>
   </div>
 </body>

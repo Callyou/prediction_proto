@@ -42,8 +42,51 @@ MongoClient.connect(url, function (err, db) {
 		   })
 	 })
 	})
-   });
 
+//****Accès à la base user ***
+db.collection('user',function(err,collection){
+// récuperation de tous les utilisateurs : localhost:port/user
+  app.get('/user',function(req,res){
+        collection.find().toArray(function(err,user){
+         if(!err) res.send(user)
+         console.log(res)
+        })
+  })
+app.post('/user',function(req,res){
+    collection.insert(req.body,function(err,user){
+       if(!err) res.send(user)
+    })
+})
+// Récuperation d'un utilisateur en copiant son _id : localhost:port/user/_id
+app.get('/user/:id',function(req,res){
+    collection.findOne({"_id": new mongodb.ObjectID(req.params.id)},function(err,user){
+         if(!err) res.send(user)
+    })
+})
+})
+
+//****Accès à la base message ***
+db.collection('message',function(err,collection){
+// récuperation de  tous les messages : localhost:port/message
+  app.get('/message',function(req,res){
+        collection.find().toArray(function(err,message){
+         if(!err) res.send(message)
+         console.log(res)
+        })
+  })
+app.post('/message',function(req,res){
+    collection.insert(req.body,function(err,message){
+       if(!err) res.send(message)
+    })
+})
+// Récuperation d'un message en copiant son _id : localhost:port/message/_id
+app.get('/message/:id',function(req,res){
+    collection.findOne({"_id": new mongodb.ObjectID(req.params.id)},function(err,message){
+         if(!err) res.send(message)
+    })
+})
+})
+});
 //Pour utilisation des routes static
  /*app.use('/temp',express.static('./temp'))*/
  //ordre important
