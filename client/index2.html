@@ -14,8 +14,9 @@
         <p>
           {{client.price}}
       </li>
+    </ul>
       <p>
-        <div ng-app="myApp" ng-controller="userController">
+        <div  ng-controller="userController">
           <ul>
           Utilisateurs
             <li ng-repeat="user in users">
@@ -25,8 +26,10 @@
               {{user.mail}}
               {{user.pswd}}
             </li>
+          </ul>
+        </div>
             <p>
-              <div ng-app="myApp" ng-controller="messageController">
+              <div  ng-controller="messageController">
                 <ul>
                 Messages envoyés par les clients aux utilisateurs mobile et web
                   <li ng-repeat="message in messages">
@@ -47,6 +50,7 @@
                   </li>
     </ul>
   </div>
+</div>
 </body>
 </html>
 </html>;
