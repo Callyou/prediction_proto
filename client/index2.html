@@ -10,14 +10,20 @@
     <ul>
     Clients
       <li ng-repeat="client in clients">
-          {{client._id }}
-          {{ client.clientId + ' , ' + client.name + ' , ' + client.city + ' , ' + client.type + ' , ' + client['sub-type'] +
-        ' , ' + client.keywords + ' , ' + client.sub-type + ' , '
-      + client.keywords + ' , ' + client.price + ' , ' + client.contact
-    + ' , ' + client.contact.tel + ' , ' + client.contact.email + ' , '
-  + client.contact.webSite + ' , ' + client.locality }}
-  {{client.address}}
-  {{client.isAssociation}}
+          {{client._id }} ,
+          {{ client.clientId }} ,
+          {{ client.name }} ,
+          {{client.city}}  ,
+          {{client.type}} ,
+          {{client['sub-type']}} ,
+          {{ client.keywords }} ,
+          {{client.price}} ,
+          {{client.contact}},
+          {{client.contact.tel}},
+         {{client.contact.email}} ,
+         {{client.contact.webSite}} ,
+          {{client.locality.address}} ,
+          {{client.isAssociation}} ,
       </li>
     </ul>
       <p>
@@ -38,19 +44,27 @@
                 <ul>
                 Messages envoyés par les clients aux utilisateurs mobile et web
                   <li ng-repeat="message in messages">
-                    {{message._id}}
-                    {{message.clientId}}
-                    {{message.isSurvey}}
-                    {{message.title}}
-                    {{message.textQuestion}}
-                    {{message.dueDate}}
+                    {{message._id}} ,
+                    {{message.clientId}} ,
+                    {{message.isSurvey}} ,
+                    {{message.title}} ,
+                    {{message.textQuestion}} ,
+                    {{message.dueDate}} ,
                     {{message.deliveryDate}}
                     {{message.creationDate}}
-                    {{message.nbPull}}
-                    {{message.answer}}
-                    {{message.stat}}
-                    {{message.estimation}}
-                    {{message.feedBack}}
+                    {{message.nbPull}} ,
+                      {{message.nbPull.mobilePull}} ,
+                      {{message.nbPull.websitePull}} ,
+                    {{message.answer}} ,
+                      {{message.answer.content.positive}},
+                      {{message.answer.content.negative}},
+                      {{message.answer.stat.total}} ,
+                      {{message.answer.stat.positive}} ,
+                      {{message.answer.stat.negative}} ,
+                    {{message.estimation}} ,
+                    {{message.feedBack}} ,
+                      {{message.feedBack.content}} ,
+                      {{message.feedBack.realNb}} ,
                     {{message.successRate}}
                   </li>
     </ul>
