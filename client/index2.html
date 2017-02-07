@@ -10,9 +10,14 @@
     <ul>
     Clients
       <li ng-repeat="client in clients">
-        {{ client.name + ', ' + client._id + ', ' + client['sub-type'] }}
-        <p>
-          {{client.price}}
+          {{client._id }}
+          {{ client.clientId + ' , ' + client.name + ' , ' + client.city + ' , ' + client.type + ' , ' + client['sub-type'] +
+        ' , ' + client.keywords + ' , ' + client.sub-type + ' , '
+      + client.keywords + ' , ' + client.price + ' , ' + client.contact
+    + ' , ' + client.contact.tel + ' , ' + client.contact.email + ' , '
+  + client.contact.webSite + ' , ' + client.locality }}
+  {{client.address}}
+  {{client.isAssociation}}
       </li>
     </ul>
       <p>
