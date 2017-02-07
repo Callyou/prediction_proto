@@ -1,5 +1,9 @@
-var app = angular.module('client', []);
 
-app.controller('clientController',['$scope', function(scope){
-  scope.clientData = "id du client"
-}])
+var app = angular.module('myApp', []);
+
+app.controller('planetController', function($scope, $http) {
+  $http.get("/client")
+  .success(function(response) {
+    $scope.clients  = response;
+    });
+});
