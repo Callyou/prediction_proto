@@ -100,7 +100,7 @@
                         <li class="sidebar-search">
                           <div class="form-group" >
                                             <label>Sélectionnez une question</label>
-                                            <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" >
+                                            <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" ng-init="message.deliveryDate = true">
                                                 <option value={{message._id}} ng-repeat="message in messages">{{message.title}}</option>
                                             </select>
                                         </div>
@@ -147,11 +147,11 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body" style="overflow-y:scroll">
 
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example1">
 
                                 <tbody id="table" ng-controller="listControllerMsg">
                                     <td>id</td><td>Date de création</td> <td>Date d'échéance</td> <td>Titre</td>
-                                  <tr  class="odd gradeX" ng-repeat="message in messages | filter:data.multipleSelect:strict | filter: globalSearch " ng-if="message.deliveryDate == null && message.dueDate != null">
+                                  <tr  class="odd gradeX" ng-repeat="message in messages | filter:data.multipleSelect:strict | filter: globalSearch " ng-if="message.deliveryDate == null">
                                     <td> <a ng-href="./ihmClient2.html">{{message._id}}</a></td>
                                     <td ng-click="clickMsg($event, message)" > {{message.creationDate}} </td>
                                     <td> <a ng-href="./ihmClient2.html">{{message.dueDate}}</a></td>
@@ -183,11 +183,11 @@
                                 <!-- /.panel-heading -->
                                 <div class="panel-body" style="overflow-y:scroll">
 
-                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
 
                                       <tbody id="table" ng-controller="listControllerMsg">
                                           <td>id</td><td>Date de création</td> <td>Date de livraison</td> <td>Titre</td>
-                                        <tr class="odd gradeX" ng-repeat="message in messages" ng-if="message.deliveryDate != null">
+                                        <tr class="odd gradeX" ng-repeat="message in messages | filter:data.multipleSelect:strict | filter: globalSearch" ng-if="message.deliveryDate != null">
                                           <td> <a ng-href="./ihmClient2.html">{{message._id}}</a></td>
                                           <td ng-click="clickMsg($event, message)" > {{message.creationDate}} </td>
                                           <td > <a ng-href="./ihmClient2.html">{{message.deliveryDate}}</a></td>
