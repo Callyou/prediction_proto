@@ -41,7 +41,7 @@
 <body ng-app="myApp">
 
 
-    <div id="wrapper"  ng-controller="clientController">
+    <div id="wrapper"  ng-controller="messageController">
      <div ng-controller="selectTypeClient">
 
         <!-- Navigation -->
@@ -98,11 +98,11 @@
 
 
                         <li class="sidebar-search">
-                          <div class="form-group">
-                                            <label>Type du client</label>
+                          <div class="form-group"  ng-controller="messageController" >
+                                            <label>Sélectionnez une question</label>
                                             <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" >
-                                                <option >Restaurant</option>
-                                                <option >Commerçant</option>
+                                                <option ng-repeat="message in messages">{{message.title}}</option>
+
 
                                             </select>
                                         </div>
@@ -111,7 +111,7 @@
 
                         <div class="form-group">
 
-                         <label class="control-label" for="date">Date de prédiction</label>
+                         <label class="control-label" for="date">Date</label>
                          <div class="input-group date">
                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text">
                           <span class="input-group-addon">
@@ -123,7 +123,7 @@
                         </li>
 
                         <li class="sidebar-search">
-                         <button type="button" class="btn btn-primary btn-lg" >Liste des clients</button>
+                         <button type="button" class="btn btn-primary btn-lg" >Bouton utile?</button>
                          </li>
 
                     </ul>
@@ -136,24 +136,28 @@
      <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header">Liste des clients restaurateurs</h3>
+                   <h2><span class="label label-default"> Vos messages </span></h2>
+                    <h3 class="page-header">Messages en cours</h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" >
 
                         <!-- /.panel-heading -->
-                        <div class="panel-body">
+                        <div class="panel-body" style="overflow-y:scroll">
 
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
 
-                                <tbody id="table" ng-controller="listController">
+                                <tbody id="table" ng-controller="messageController">
+                                  <td >Date de création</td> <td>Date limite</td> <td >Titre </td>
+                                  <tr  class="odd gradeX" ng-repeat="message in messages" suchHref="#/user/{{message.textQuestion}}">
+                                        <td> {{message.creationDate}}</td>
+                                        <td> {{message.dueDate}}</td>
+                                        <td > {{message.title}} </td>
 
-                                  <tr  class="odd gradeX" ng-repeat="client in clients| filter:{type:data.multipleSelect} |filter: globalSearch ">
-                                        <td>{{client.name}}</td>
                                       <!--   <span>{{data.multipleSelect}}</span> -->
 
                                     </tr>
@@ -163,9 +167,42 @@
 
                         </div>
                         <!-- /.panel-body -->
+
                     </div>
+                    <h3 class="page-header">Messages estimés</h3>
+                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default" >
+
+                                <!-- /.panel-heading -->
+                                <div class="panel-body" style="overflow-y:scroll">
+
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+
+                                        <tbody id="table" ng-controller="messageController">
+                                          <td>Date de création</td> <td>Date de livraison</td> <td>Titre</td>
+                                          <tr  class="odd gradeX" ng-repeat="message in messages">
+                                                <td> {{message.creationDate}}</td>
+                                                <td> {{message.deliveryDate}}</td>
+                                                <td> {{message.title}}</td>
+
+                                              <!--   <span>{{data.multipleSelect}}</span> -->
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <!-- /.panel-body -->
+
+                            </div>
+                            </div>
+                            </div>
                     <!-- /.panel -->
                 </div>
+
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
@@ -213,6 +250,7 @@
        };
        date_input.datepicker(options);
     });
+
  </script>
 
     </body>
