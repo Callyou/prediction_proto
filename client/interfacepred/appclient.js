@@ -15,15 +15,27 @@ app.controller('userController', function($scope, $http) {
     });
 });
 
-app.controller('messageController', function($scope, $http) {
+app.controller('messageController', function($scope, $location, $http) {
+
   $http.get("/message")
+  // $http.get("/client/"+ $scope.clientId +"/messages")
   .success(function(response) {
     $scope.messages  = response;
   });
 
+  $http.get("/client")
+  .success(function(response) {
+    $scope.clients  = response;
+    });
+    
   $scope.clickMsg = function($event, message) {
+    $location.url('#' + message._id);
       console.log("clicked message:", message);
   }
+
+  $scope.showClient = function(message) {
+    $location.path('#/user' + message._id);
+  };
 
 });
 
