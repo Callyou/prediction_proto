@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>IHM Client 1 - Bienvenue sur votre espace de gestion</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -53,8 +53,34 @@
                 
             </div>
             <!-- /.navbar-header -->
+                 <div class="col-sm-6 col-md-6">
+       <form class="navbar-form" role="search">
+        <div class="input-group" style="padding-left:50px;width:550px;">
+            <input type="text" class="form-control" placeholder="Search" name="q" ng-model="globalSearch.$" >
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
+    
+    </div>
 
-                          
+	            <ul class="nav navbar-top-links navbar-right">
+            
+               
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Mon profil</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Paramètres</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="ihmClient1.html"><i class="fa fa-sign-out fa-fw"></i> Déconnexion</a>
+                        </li>
+                    </ul>
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
