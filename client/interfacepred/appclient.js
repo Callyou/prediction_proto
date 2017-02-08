@@ -25,34 +25,47 @@ app.controller('messageController', function($scope, $http) {
 
 app.controller('listController',function($scope,$http){
   $http.get("/client").success(function(response){
-    
-    var type="Restaurant";
-    console.log(type);
+
  
    
     $scope.clients=response;
 
     //var toto = $filter('filter')( $scope.clients, { type:  ["Restaurant"] });
     //toto=response;
+    //$scope.clientName ='toto';
+    $scope.test = function(client){
 
 
 
+
+      $('.page1').hide();
+      $('.page2').show();
+     $("#nom").append(client.name);
+     $("#ville").append(client.city);
+     $("#adresse").append(client.locality.address)
+     $("#siteweb").append(client.contact.webSite);
+     $("#email").append(client.contact.email);
+     $("#contact").append(client.contact.tel);
+
+    
+
+    }  
 
   })
   
 });
 
-
-
- app.controller('selectTypeClient', ['$scope', function($scope) {
+app.controller('selectTypeClient', ['$scope', function($scope) {
    $scope.data = {
     
     multipleSelect: []
     
-   };
-
-  
+   }
 }]);
+
+
+
+
 
 
 
