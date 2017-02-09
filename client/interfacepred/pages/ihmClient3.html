@@ -64,7 +64,11 @@
                         <li>
                         <li class="sidebar-search">
                           <div class="form-group">
+                            <label>! Pour la démonstration seulement, sélectionnez le clientId désiré !</label>
 
+                            <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="clientId">
+                              <option value={{client.clientId}} ng-repeat="client in clients">{{client.clientId}}</option>
+                            </select>
                             <label>Sélectionnez une question</label>
                             <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" ng-init="message.deliveryDate = true">
                               <option value={{message._id}} ng-repeat="message in messages | filter:clientId:search">{{message.title}}</option>
