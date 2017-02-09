@@ -27,7 +27,7 @@ app.controller('messageController', function($scope, $location, $http) {
   .success(function(response) {
     $scope.clients  = response;
     });
-    
+
   $scope.clickMsg = function($event, message) {
     $location.url('#' + message._id);
       console.log("clicked message:", message);
@@ -37,6 +37,9 @@ app.controller('messageController', function($scope, $location, $http) {
     $location.path('#/user' + message._id);
   };
 
+  $scope.addContact = function(message){
+    console.log($scope.contact)
+  }
 });
 
 

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> IHM Prédiction Kapupa - Bienvenue sur votre espace de gestion </title>
+    <title> Retour sur prédiction </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -38,7 +38,6 @@
 <body ng-app="myApp">
 
     <div id="wrapper" ng-controller="messageController">
-        <div ng-controller="selectTypeMsg">
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -52,7 +51,14 @@
                 <img src="..\img\logokapupa.png" style="height:70px;" >
 
             </div>
+            <!-- /.navbar-header -->
 
+
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" style="margin-top:100px;" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -60,33 +66,33 @@
                         <li class="sidebar-search">
 
                             <!-- /input-group -->
-                        </li>
-                        <li>
+                          </li>
+                          <li>
+                          <li class="sidebar-search">
+                            <div class="form-group">
+                              <label>! Pour la démonstration seulement, sélectionnez le clientId désiré !</label>
+
+                              <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="clientId">
+                                <option value={{client.clientId}} ng-repeat="client in clients">{{client.clientId}}</option>
+                              </select>
+                              <label>Sélectionnez une question</label>
+                              <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" ng-init="message.deliveryDate = true">
+                                <option value={{message._id}} ng-repeat="message in messages | filter:clientId:search">{{message.title}}</option>
+                              </select>
+                            </div>
+                          </li>
                         <li class="sidebar-search">
                           <div class="form-group">
-                            <label>! Pour la démonstration seulement, sélectionnez le clientId désiré !</label>
 
-                            <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="clientId">
-                              <option value={{client.clientId}} ng-repeat="client in clients">{{client.clientId}}</option>
-                            </select>
-                            <label>Sélectionnez une question</label>
-                            <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" ng-init="message.deliveryDate = true">
-                              <option value={{message._id}} ng-repeat="message in messages | filter:clientId:search">{{message.title}}</option>
-                            </select>
-                          </div>
-                        </li>
-                      <li class="sidebar-search">
-                        <div class="form-group">
-
-                          <label class="control-label" for="date">Date</label>
-                          <div class="input-group date">
-                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text">
-                            <span class="input-group-addon">
-                              <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                          </div>
-							                    </div>
-							                  </li>
+                            <label class="control-label" for="date">Date</label>
+                            <div class="input-group date">
+                              <input class="form-control" id="date" name="date" placeholder="DD/MM/AAAA" type="text">
+                             <span class="input-group-addon">
+                           <span class="glyphicon glyphicon-calendar"></span>
+       </span>
+										</div>
+							</div>
+							</li>
 
             <div class="navbar-default sidebar" style="margin-top:100px;" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -129,9 +135,10 @@
 			 <div class="row">
                 <div class="col-lg-12">
                     <div class="form-group">
-                          <label class="control-label" for="date"><h3>Date de prédiction</h3></label>
+
+                                         <label class="control-label" for="date"><h3>Date de prédiction à noter</h3></label>
                                          <div class="input-group date">
-                                           <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text">
+                                           <input class="form-control" id="date" name="date" placeholder="DD/MM/AAAA" type="text" ng-model="contact.creationDate">
                                           <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
 										</span>
@@ -144,7 +151,7 @@
 							<label> <h3> Nombre d'entrée réel </h3> </label>
 								<div >
 
-							<input type="text" name="subject" placeholder="Entrez un nombre" class="contact-subject form-control" id="contact-subject">
+							<input type="text" name="subject" placeholder="Entrez un nombre" class="contact-subject form-control" id="contact-subject" ng-model="contact.realNb">
 							</div>
                             </div>
 
@@ -152,7 +159,7 @@
 						<br>
 							<p>
 							<label> <h3> Commentaires </h3> </label>
-							<input type="text" name="subject" placeholder="Veuillez mettre votre commentaire" class="contact-subject form-control" style="width: 800px; height: 200px; text-align : center" id="contact-subject">
+							<input type="text" name="subject" placeholder="Veuillez mettre votre commentaire" class="contact-subject form-control" style="width: 800px; height: 200px; text-align : center" id="contact-subject" ng-model="contact.content">
 							</p>
 						</br>
 
@@ -200,7 +207,7 @@
             var date_input=$('input[name="date"]'); //our date input has the name "date"
             var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
             var options={
-              format: 'mm/dd/yyyy',
+              format: 'dd/mm/yyyy',
               container: container,
               todayHighlight: true,
               autoclose: true,
