@@ -124,7 +124,7 @@
 
                          <li class="sidebar-search" id="question">
                           <div class="form-group" ng-controller="messageController">
-                          <div ng-controller="clientController">
+                          <div ng-controller="listController">
 
                                             <label>Question</label>
                                 <select class="form-control" id="toto" ng-model="select-message" nd-options="message as message.textQuestion for message in messages|filter:{clientId:'78546'}">
@@ -134,8 +134,7 @@
                                             </select>
                                         </div>
                                         </div>
-                                        <!-- C EST ICI QU'IL FAUT afficher les questions selon l'id-->
-                                        <input />{{client.clientId}}</input>
+                                        <input id="test1"/>
                         </li>
 
                     </ul>
@@ -206,8 +205,8 @@
 
      <div id="page-wrapper" class="page2">
             <div class="row" id="titre">
-                <div class="col-lg-12" style="text-align:center;" ng-controller="listController">
-                    <h3 class="page-header"><span id="nom"></span></h3>
+                <div class="col-lg-12" style="text-align:center;">
+                    <h3 class="page-header">OkSushi</h3>
                        <div class="col-lg-12" style="text-align:center;margin-bottom:20px;">
                  <button type="button" class="btn btn-outline btn-danger" >Taux d'erreur global : <span><b>20%</b></span></button>
                  </div>
