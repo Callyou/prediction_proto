@@ -60,7 +60,7 @@ MongoClient.connect(url, function (err, db) {
         console.log(res)
       })
     })
-    app.post('/user',function(req,res){
+    app.post('/user', function(req,res){
       collection.insert(req.body,function(err,user){
         if(!err) res.send(user)
       })
@@ -82,6 +82,7 @@ MongoClient.connect(url, function (err, db) {
         console.log(res)
       })
     })
+
     app.post('/message',function(req, res){
       console.log(req.body);
       collection.insert(req.body, function(err, doc){

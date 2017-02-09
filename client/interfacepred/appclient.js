@@ -43,10 +43,9 @@ refresh();
   };
 
   $scope.addContact = function(message){
-    console.log($scope.contact);
-    $http.post('/message', $scope.message).success(function(response){
-      console.log(response);
-      refresh();
+    console.log("lol", $scope.contact, message, JSON.stringify($scope.contact));
+    $http.post( '/message', $scope.contact ).success(function(response){
+        console.log("res", response);
     })
   }
 });
