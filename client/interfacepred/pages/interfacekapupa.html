@@ -127,7 +127,7 @@
                           <div ng-controller="listController">
 
                                             <label>Question</label>
-                                <select class="form-control" id="toto" ng-model="x" nd-options="message as message.textQuestion for message in messages|filter:{clientId:'78546'}">
+                                <select class="form-control" id="toto" ng-model="select-message" nd-options="message as message.textQuestion for message in messages|filter:{clientId:'78546'}">
                                                 <option>--</option>
                                                
                                                
@@ -178,7 +178,7 @@
 
                                   <tr  class="odd gradeX" ng-repeat="client in clients| filter:{type:data.multipleSelect} |filter: globalSearch ">
                                   <!-- liste des clients -->
-                                        <td><a href="#" ng-click="test(client); ">{{client.name}}</a></td>
+                                        <td><a href="#" ng-click="test(client); " ng-model="select-message">{{client.name}}</a></td>
                                       
                                        
                                     </tr>

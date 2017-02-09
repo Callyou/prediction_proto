@@ -20,7 +20,7 @@ app.controller('messageController', function($scope, $http) {
   .success(function(response) {
     $scope.messages  = response;
     });
-  
+
   $http.get("/client")
   .success(function(response) {
     $scope.clients  = response;
@@ -40,7 +40,7 @@ app.controller('listController',function($scope,$http){
     //$scope.clientName ='toto';
     $scope.test = function(client){
 
-this.x=client.clientId;
+
 
 
       $('.page1').hide();
