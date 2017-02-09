@@ -16,17 +16,22 @@ app.controller('userController', function($scope, $http) {
 });
 
 app.controller('messageController', function($scope, $location, $http) {
-
+var refresh = function(){
   $http.get("/message")
   // $http.get("/client/"+ $scope.clientId +"/messages")
   .success(function(response) {
     $scope.messages  = response;
+    $scope.contact = "";
   });
+
 
   $http.get("/client")
   .success(function(response) {
     $scope.clients  = response;
     });
+};
+
+refresh();
 
   $scope.clickMsg = function($event, message) {
     $location.url('#' + message._id);
@@ -38,7 +43,11 @@ app.controller('messageController', function($scope, $location, $http) {
   };
 
   $scope.addContact = function(message){
-    console.log($scope.contact)
+    console.log($scope.contact);
+    $http.post('/message', $scope.message).success(function(response){
+      console.log(response);
+      refresh();
+    })
   }
 });
 

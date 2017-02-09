@@ -8,6 +8,14 @@ var app = exp();
 var MongoClient = mongodb.MongoClient
 // le lien de la base données sur le serveur de base de données
 var url = 'mongodb://localhost:27017/miageTest'
+// pour parser le document envoyé à MongoDB
+var bodyParser = require('body-parser');
+
+
+app.use(bodyParser.json());
+//crée une route a /public et donne acces au fichier qui a dans repertoire client
+app.use('/public', exp.static('../client'));
+
 // fonction de connexion avec la base de données
 MongoClient.connect(url, function (err, db) {
   //console.log(err);
@@ -16,8 +24,7 @@ MongoClient.connect(url, function (err, db) {
   app.get('/',function(req,res){
     res.send('HELLOOO');
   });
-  //crée une route a /public et donne acces au fichier qui a dans repertoire client
-  app.use('/public', exp.static('../client'));
+
 
   console.log('connexion etablie')
   // code qui exploite la base db
@@ -75,10 +82,16 @@ MongoClient.connect(url, function (err, db) {
         console.log(res)
       })
     })
-    app.post('/message',function(req,res){
-      collection.insert(req.body,function(err,message){
-        if(!err) res.send(message)
-      })
+    app.post('/message',function(req, res){
+      console.log(req.body);
+      collection.insert(req.body, function(err, doc){
+        res.json(doc);
+      });
+      //collection.insert(req.body,function(err, message){
+      //   res.json(doc);
+      //   if(!err) res.send(message);
+      //   console.log(res);
+      // })
     })
     // Récuperation d'un message en copiant son _id : localhost:port/message/_id
     app.get('/message/:id',function(req,res){
