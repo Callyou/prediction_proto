@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
 
@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>IHM Prédiction Kapupa - Bienvenue sur votre espace de gestion</title>
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,6 +23,7 @@
 
     <!-- Morris Charts CSS -->
     <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
     <!-- Custom Fonts -->
@@ -82,7 +83,7 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Paramètres</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="interfacekapupa.html"><i class="fa fa-sign-out fa-fw"></i> Déconnexion</a>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Déconnexion</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -99,8 +100,8 @@
                         <li class="sidebar-search">
                           <div class="form-group">
                                             <label>Type du client</label>
-                                            <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" >
-                                                <option >Restaurant</option>
+                                <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" >
+                                                <option>Restaurant</option>
                                                 <option >Commerçant</option>
 
                                             </select>
@@ -121,9 +122,21 @@
                         </div>
                         </li>
 
-                        <li class="sidebar-search">
-                         <button type="button" class="btn btn-primary btn-lg" >Liste des clients</button>
-                         </li>
+                         <li class="sidebar-search" id="question">
+                          <div class="form-group" ng-controller="messageController">
+                          <div ng-controller="clientController">
+
+                                            <label>Question</label>
+                                <select class="form-control" id="toto" ng-model="select-message" nd-options="message as message.textQuestion for message in messages|filter:{clientId:'78546'}">
+                                                <option>--</option>
+
+
+                                            </select>
+                                        </div>
+                                        </div>
+                                        <!-- C EST ICI QU'IL FAUT afficher les questions selon l'id-->
+                                        <input />{{client.clientId}}</input>
+                        </li>
 
                     </ul>
                 </div>
@@ -132,17 +145,30 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-     <div id="page-wrapper">
-            <div class="row">
+     <div id="page-wrapper" class="page1">
+            <div class="row" id="titre">
                 <div class="col-lg-12">
-                    <h3 class="page-header">Liste des clients restaurateurs</h3>
+                    <h3 class="page-header">Liste des clients</h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
+
+                     <div  style="padding-top:20px;">
+                   <div class="panel panel-warning" id="information">
+                        <div class="panel-heading">
+                            Information
+                        </div>
+                        <div class="panel-body">
+                            <p>Aucun filtre n'a été efféctué de votre part, choisissez les filtres ce trouvant à gauche de la page </p>
+                        </div>
+
+                    </div>
+                    </div>
+
 
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -152,8 +178,9 @@
                                 <tbody id="table" ng-controller="listController">
 
                                   <tr  class="odd gradeX" ng-repeat="client in clients| filter:{type:data.multipleSelect} |filter: globalSearch ">
-                                        <td>{{client.name}}</td>
-                                      <!--   <span>{{data.multipleSelect}}</span> -->
+                                  <!-- liste des clients -->
+                                        <td><a href="#" ng-click="test(client); " ng-model="select-message">{{client.name}}</a></td>
+
 
                                     </tr>
 
@@ -161,8 +188,7 @@
                             </table>
 
                         </div>
-                        <!-- /.panel-body -->
-                    </div>
+
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->
@@ -177,6 +203,124 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
+
+     <div id="page-wrapper" class="page2">
+            <div class="row" id="titre">
+                <div class="col-lg-12" style="text-align:center;" ng-controller="listController">
+                    <h3 class="page-header"><span id="nom"></span></h3>
+                       <div class="col-lg-12" style="text-align:center;margin-bottom:20px;">
+                 <button type="button" class="btn btn-outline btn-danger" >Taux d'erreur global : <span><b>20%</b></span></button>
+                 </div>
+
+
+                </div>
+
+
+                <!-- /.col-lg-12 -->
+            </div>
+
+
+
+           <div class="row">
+           <div class="col-md-12">
+
+                    <div class="panel panel-warning" ng-controller="listController">
+                        <div class="panel-heading">
+                           Fiche Client
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                            <div class="col-md-6">
+                            <ul>
+                       <li><b> Nom : </b><span id="nom"></span> </li>
+                        <li><b> Ville : </b><span id="ville"></span> </li>
+                        <li><b> Adresse : </b><span id="adresse"></span></li>
+                        </ul>
+
+                            </div>
+                             <div class="col-md-6">
+                              <ul>
+                       <li><b> Contact : </b><span id="contact"></span> </li>
+                        <li><b> Site Web : </b><span id="siteweb"></span></li>
+                        <li><b> Email : </b><span id="email"></span></li>
+                        </ul>
+                            </div>
+                            </div>
+                        </div>
+
+                </div>
+           </div>
+           </div>
+
+           <div class="row">
+                   <div class="col-lg-12">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                          Réponses utilisateurs
+                        </div>
+                        <div class="panel-body" >
+                          <div class="row">
+                          <div class="col-md-4">
+                          <h4>Total réponses </h4>
+                          <div ng-repeat="client in clients| filter:{type:data.multipleSelect} |filter: globalSearch ">
+                          <span>110/300</span>
+                          </div>
+                          </div>
+                           <div class="col-md-4">
+                         <h4> Oui  </h4><span>50</span>
+                          </div>
+                           <div class="col-md-4">
+                         <h4>Non </h4><span>60</span>
+                          </div>
+                          </div>
+
+                        </div>
+                    </div>
+                    <!-- /.col-lg-4 -->
+                </div>
+           </div>
+
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            Résultat de prédiction
+                        </div>
+                        <div class="panel-body">
+                            <p>62% soit 30 couverts</p>
+
+                        </div>
+
+                    </div>
+                    <!-- /.col-lg-4 -->
+                </div>
+                <div class="col-lg-4">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            Retour client
+                        </div>
+                        <div class="panel-body">
+                            <p>25 couverts </p>
+                        </div>
+
+                    </div>
+                    <!-- /.col-lg-4 -->
+                </div>
+                <div class="col-lg-4">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                           Taux d'erreur
+                        </div>
+                        <div class="panel-body">
+                            <p>le retour n'est pas encore renseigné par Oksushi</p>
+                        </div>
+
+                    </div>
+                    <!-- /.col-lg-4 -->
+                </div>
+            </div>
+        </div>
 
 
 
@@ -201,7 +345,17 @@
      <script src="../appclient.js"></script>
 
 <script>
+/*
+function test(client){
+    console.log(client);
+    $('.page1').hide();
+    $('.page2').show();
+
+
+}*/
      $(document).ready(function(){
+
+
        var date_input=$('input[name="date"]'); //our date input has the name "date"
        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
        var options={
@@ -211,7 +365,28 @@
          autoclose: true,
        };
        date_input.datepicker(options);
+
+$('#titre').hide();
+$('#question').hide();
+$('.page2').hide();
+
+
+        $('#multipleSelect').change(function(){
+            if ($('.page1').is(':visible')){
+        $('#information').hide();
+        $('#titre').show();
+        $('#question').show();
+        }  else if ($('.page2').is(':visible') && $('.page1').is(':hidden')){
+            $('.page1').show();
+            $('.page2').hide();
+            $('#question').hide();
+        }
     });
+
+
+
+});
+
  </script>
 
     </body>
