@@ -24,11 +24,8 @@
     <!-- Morris Charts CSS -->
     <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,158 +33,40 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+ <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]
+        ]);
+
+        var options = {
+          title: 'My Daily Activities',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
 
 </head>
 
 <body ng-app="myApp">
  
 
-    <div id="wrapper"  ng-controller="clientController">
-     <div ng-controller="selectTypeClient">
+    <div id="wrapper" >
+     <div>
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <img src="..\img\logokapupa.png" style="height:70px;" >
-                
-            </div>
-            <!-- /.navbar-header -->
-
-                 <div class="col-sm-6 col-md-6">
-       <form class="navbar-form" role="search">
-        <div class="input-group" style="padding-left:50px;width:550px;">
-            <input type="text" class="form-control" placeholder="Search" name="q" ng-model="globalSearch.$" >
-            <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-            </div>
-        </div>
-        </form>
-    
-    </div>
-
-            <ul class="nav navbar-top-links navbar-right">
-            
-               
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Mon profil</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Paramètres</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Déconnexion</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-     
-            <div class="navbar-default sidebar" style="margin-top:100px;" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                     
-                       
-                        <li class="sidebar-search"> 
-                          <div class="form-group">
-                                            <label>Type du client</label>
-                                            <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" >
-                                                <option>Restaurant</option>
-                                                <option >Commerçant</option>
-                                               
-                                            </select>
-                                        </div>
-                        </li>
-                        <li class="sidebar-search">
-                         
-                        <div class="form-group">
-                           
-                         <label class="control-label" for="date">Date de prédiction</label>
-                         <div class="input-group date">
-                           <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text">
-                          <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                    </div>
-
-                        </div>
-                        </li>
-                      <li class="sidebar-search"> 
-                          <div class="form-group">
-                                            <label>Question</label>
-                                            <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" >
-                                                <option>seriez-vous intéréssé par un repas libanais le lundi 21/05/2016</option>
-                                                <option >seriez-vous intéréssé par un repas japonais le samedi 27/05/2016</option>
-                                               
-                                            </select>
-                                        </div>
-                        </li>
-                         
-                                    
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
-        </nav>
+        
 
      <div id="page-wrapper">
-            <div class="row" id="titre">
-                <div class="col-lg-12" style="text-align:center;">
-                    <h3 class="page-header">OkSushi</h3>
-                       <div class="col-lg-12" style="text-align:center;margin-bottom:20px;">
-                 <button type="button" class="btn btn-outline btn-danger" >Taux d'erreur global : <span><b>20%</b></span></button>
-                 </div>
-
-
-                </div>
-                 
-
-                <!-- /.col-lg-12 -->
-            </div>
-
-            
-           
-           <div class="row">
-           <div class="col-md-12">
-
-                    <div class="panel panel-warning">
-                        <div class="panel-heading">
-                           Fiche Client
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                            <div class="col-md-6">
-                            <ul>
-                       <li><b> Nom : </b><span>OkSushi</span> </li>
-                        <li><b> Ville : </b><span>Monpellier</span> </li>
-                        <li><b> Adresse : </b><span>31 rue marion cochard </span></li>
-                        </ul>
-
-                            </div>
-                             <div class="col-md-6">
-                              <ul>
-                       <li><b> Contact : </b><span>0840501696</span> </li>
-                        <li><b> Site Web : </b><span>www.oksushi.fr</span></li>
-                        <li><b> Email : </b><span>oksushicontact@gmail.com</span></li>
-                        </ul>
-                            </div>
-                            </div>
-                        </div>
-                       
-                </div>
-           </div>
-           </div>
 
            <div class="row">
                    <div class="col-lg-12">
@@ -198,14 +77,12 @@
                         <div class="panel-body" >
                           <div class="row">
                           <div class="col-md-4">
-                          <h4>Total réponses </h4> <span>110/300</span>
+                          <h4>Total réponses </h4>
+                            <div id="donutchart" style="width: 900px; height: 500px;"></div>
+
                           </div>
-                           <div class="col-md-4">
-                         <h4> Oui  </h4><span>50</span>
-                          </div>
-                           <div class="col-md-4">
-                         <h4>Non </h4><span>60</span>
-                          </div>
+                          
+                          
                           </div>  
 
                         </div>
@@ -215,45 +92,7 @@
            </div>
 
            
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            Résultat de prédiction
-                        </div>
-                        <div class="panel-body">
-                            <p>62% soit 30 couverts</p>
-                            
-                        </div>
-                       
-                    </div>
-                    <!-- /.col-lg-4 -->
-                </div>
-                <div class="col-lg-4">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            Retour client
-                        </div>
-                        <div class="panel-body">
-                            <p>25 couverts </p>
-                        </div>
-                        
-                    </div>
-                    <!-- /.col-lg-4 -->
-                </div>
-                <div class="col-lg-4">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                           Taux d'erreur
-                        </div>
-                        <div class="panel-body">
-                            <p>le retour n'est pas encore renseigné par Oksushi</p>
-                        </div>
-
-                    </div>
-                    <!-- /.col-lg-4 -->
-                </div>
-            </div>
+        
         </div>
         <!-- /#page-wrapper -->
 </div>

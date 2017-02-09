@@ -20,6 +20,11 @@ app.controller('messageController', function($scope, $http) {
   .success(function(response) {
     $scope.messages  = response;
     });
+  
+  $http.get("/client")
+  .success(function(response) {
+    $scope.clients  = response;
+    });
 });
 
 
@@ -35,25 +40,30 @@ app.controller('listController',function($scope,$http){
     //$scope.clientName ='toto';
     $scope.test = function(client){
 
-
+this.x=client.clientId;
 
 
       $('.page1').hide();
       $('.page2').show();
-     $("#nom").append(client.name);
-     $("#ville").append(client.city);
-     $("#adresse").append(client.locality.address)
-     $("#siteweb").append(client.contact.webSite);
-     $("#email").append(client.contact.email);
-     $("#contact").append(client.contact.tel);
+     $("#nom").text(client.name);
+     $("#ville").text(client.city);
+     $("#adresse").text(client.locality.address)
+     $("#siteweb").text(client.contact.webSite);
+     $("#email").text(client.contact.email);
+     $("#contact").text(client.contact.tel);
 
-    
+      $("#test1").val(client.clientId);
+   
+
 
     }  
+
 
   })
   
 });
+
+
 
 app.controller('selectTypeClient', ['$scope', function($scope) {
    $scope.data = {

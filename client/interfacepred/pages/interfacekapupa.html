@@ -120,11 +120,22 @@
                     </div>
 
                         </div>
-
-                        <input ng-model="value" /><br />
                         </li>
                       
-                         
+                         <li class="sidebar-search" id="question"> 
+                          <div class="form-group" ng-controller="messageController">
+                          <div ng-controller="listController">
+
+                                            <label>Question</label>
+                                <select class="form-control" id="toto" ng-model="x" nd-options="message as message.textQuestion for message in messages|filter:{clientId:'78546'}">
+                                                <option>--</option>
+                                               
+                                               
+                                            </select>
+                                        </div>
+                                        </div>
+                                        <input id="test1"/>
+                        </li>
                                     
                     </ul>
                 </div>
@@ -166,8 +177,9 @@
                                 <tbody id="table" ng-controller="listController">
 
                                   <tr  class="odd gradeX" ng-repeat="client in clients| filter:{type:data.multipleSelect} |filter: globalSearch ">
+                                  <!-- liste des clients -->
                                         <td><a href="#" ng-click="test(client); ">{{client.name}}</a></td>
-                                      <!--   <span>{{data.multipleSelect}}</span> -->
+                                      
                                        
                                     </tr>
                                   
@@ -220,16 +232,16 @@
                             <div class="col-md-6">
                             <ul>
                        <li><b> Nom : </b><span id="nom"></span> </li>
-                        <li><b> Ville : </b><span id="ville">Monpellier</span> </li>
-                        <li><b> Adresse : </b><span id="adresse">31 rue marion cochard </span></li>
+                        <li><b> Ville : </b><span id="ville"></span> </li>
+                        <li><b> Adresse : </b><span id="adresse"></span></li>
                         </ul>
 
                             </div>
                              <div class="col-md-6">
                               <ul>
-                       <li><b> Contact : </b><span id="contact">0840501696</span> </li>
-                        <li><b> Site Web : </b><span id="siteweb">www.oksushi.fr</span></li>
-                        <li><b> Email : </b><span id="email">oksushicontact@gmail.com</span></li>
+                       <li><b> Contact : </b><span id="contact"></span> </li>
+                        <li><b> Site Web : </b><span id="siteweb"></span></li>
+                        <li><b> Email : </b><span id="email"></span></li>
                         </ul>
                             </div>
                             </div>
@@ -248,7 +260,10 @@
                         <div class="panel-body" >
                           <div class="row">
                           <div class="col-md-4">
-                          <h4>Total réponses </h4> <span>110/300</span>
+                          <h4>Total réponses </h4> 
+                          <div ng-repeat="client in clients| filter:{type:data.multipleSelect} |filter: globalSearch ">
+                          <span>110/300</span>
+                          </div>
                           </div>
                            <div class="col-md-4">
                          <h4> Oui  </h4><span>50</span>
@@ -351,11 +366,20 @@ function test(client){
        date_input.datepicker(options);
 
 $('#titre').hide();
+$('#question').hide();
 $('.page2').hide();
 
+
         $('#multipleSelect').change(function(){
+            if ($('.page1').is(':visible')){
         $('#information').hide();  
-        $('#titre').show();     
+        $('#titre').show();  
+        $('#question').show(); 
+        }  else if ($('.page2').is(':visible') && $('.page1').is(':hidden')){
+            $('.page1').show();
+            $('.page2').hide();
+            $('#question').hide();
+        }
     });
     
 
