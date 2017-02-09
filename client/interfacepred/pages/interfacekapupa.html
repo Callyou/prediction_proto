@@ -127,7 +127,7 @@
                           <div ng-controller="listController">
 
                                             <label>Question</label>
-                                <select class="form-control" id="toto" ng-model="select-message" nd-options="message as message.textQuestion for message in messages|filter:{clientId:'78546'}">
+                                <select class="form-control" id="toto" ng-model="select-message" nd-options="message as message.textQuestion for message in messages|filter:{clientId:client.clientId}">
                                                 <option>--</option>
                                                
                                                
