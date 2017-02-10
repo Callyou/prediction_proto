@@ -101,7 +101,6 @@ MongoClient.connect(url, function (err, db) {
       })
     })
 
-
     // Récuperation d'un client en copiant son _id : localhost:port/client/_id
     app.get('/client/:id/messages', function(req, res) {
       collection.find({"clientId": req.params.id}).toArray(function(err, messages) {
