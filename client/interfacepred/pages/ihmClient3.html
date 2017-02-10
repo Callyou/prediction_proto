@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> Retour sur prÃ©diction </title>
+    <title> Retour sur prédiction </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -70,12 +70,12 @@
                           <li>
                           <li class="sidebar-search">
                             <div class="form-group">
-                              <label>! Pour la dÃ©monstration seulement, sÃ©lectionnez le clientId dÃ©sirÃ© !</label>
+                              <label>! Pour la démonstration seulement, sélectionnez le clientId désiré !</label>
 
                               <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="clientId">
                                 <option value={{client.clientId}} ng-repeat="client in clients">{{client.clientId}}</option>
                               </select>
-                              <label>SÃ©lectionnez une question</label>
+                              <label>Sélectionnez une question</label>
                               <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" ng-init="message.deliveryDate = true">
                                 <option value={{message._id}} ng-repeat="message in messages | filter:clientId:search">{{message.title}}</option>
                               </select>
@@ -127,7 +127,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                 <h2><span class="label label-default">Retour sur prÃ©diction </span></h2>
+                 <h2><span class="label label-default">Retour sur prédiction </span></h2>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -136,7 +136,7 @@
                 <div class="col-lg-12">
                     <div class="form-group">
 
-                                         <label class="control-label" for="date"><h3>Date de prÃ©diction Ã  noter</h3></label>
+                                         <label class="control-label" for="date"><h3>Date de prédiction à noter</h3></label>
                                          <div class="input-group date">
                                            <input class="form-control" id="date" name="date" placeholder="DD/MM/AAAA" type="text" ng-model="contact.creationDate">
                                           <span class="input-group-addon">
@@ -145,12 +145,12 @@
 										</div>
 										</div>
 
-							<!-- /.Inserer le nombre d'entrÃ©e rÃ©el dans la base de donnÃ©es -->
+							<!-- /.Inserer le nombre d'entrée réel dans la base de données -->
 
 							 <div class="form-group">
-							<label> <h3> Nombre d'entrÃ©e rÃ©el </h3> </label>
+							<label> <h3> Nombre d'entrée réel </h3> </label>
 								<div >
-							
+
 							<input type="text" name="subject" placeholder="Entrez un nombre" class="contact-subject form-control" id="contact-subject" ng-model="contact.realNb">
 							</div>
                             </div>
@@ -165,7 +165,7 @@
 
 							</div>
 
-						<!-- /.Envoyer les donnÃ©es Ã  Kapupa -->
+						<!-- /.Envoyer les données à Kapupa -->
 
 
 						</div>
@@ -219,3 +219,5 @@
     </body>
 
 </html>
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help
