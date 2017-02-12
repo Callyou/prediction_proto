@@ -19,10 +19,13 @@ function($routeProvider) {
       console.log('ther');
     }
   }).otherwise({
-    templateUrl: '/public/interfacepred/pages/selectMessage.html',
+    templateUrl: '/public/interfacepred/pages/dashboard.html',
     controller: 'messageController'
   });
-
+  // .otherwise({
+  //   templateUrl: '/public/interfacepred/pages/selectMessage.html',
+  //   controller: 'messageController'
+  // });
 }]);
 
 app.controller('MessageViewCtrl', function($scope, $http, $routeParams) {
@@ -54,6 +57,9 @@ app.controller('messageController', function($scope, $location, $http) {
     .success(function(response) {
       $scope.messages  = response;
       $scope.contact = "";
+      $scope.messagewithoutdelivery = response.filter(function(lm){console.log(lm);return lm.deliveryDate == null});
+      $scope.messagewithdelivery = response.filter(function(lm){console.log(lm);return lm.deliveryDate != null});
+      $scope.messagewithcontent = response.filter(function(lm){console.log(lm);return lm.content != null});
     });
 
 
@@ -80,6 +86,7 @@ app.controller('messageController', function($scope, $location, $http) {
       console.log("res", response);
     })
   }
+
 });
 
 
