@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -45,8 +45,8 @@
 
 </head>
 <body ng-app="myApp">
-  <div id="wrapper"  ng-controller="messageController">
-    <div ng-controller="selectTypeMsg">
+  <div id="wrapper">
+    <div>
 
       <!-- Navigation -->
       <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -61,133 +61,133 @@
         </div>
         <!-- /.navbar-header -->
         <ul class="nav navbar-top-links navbar-right">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-messages">
+              <li>
+                <a href="#">
+                  <div>
+                    <strong>John Smith</strong>
+                    <span class="pull-right text-muted">
+                      <em>Yesterday</em>
+                    </span>
+                  </div>
+                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
                 </a>
-                <ul class="dropdown-menu dropdown-messages">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                <span class="pull-right text-muted">
-                                    <em>Yesterday</em>
-                                </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                <span class="pull-right text-muted">
-                                    <em>Yesterday</em>
-                                </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <strong>John Smith</strong>
-                                <span class="pull-right text-muted">
-                                    <em>Yesterday</em>
-                                </span>
-                            </div>
-                            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>Read All Messages</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-messages -->
-            </li>
-            <!-- /.dropdown -->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <strong>John Smith</strong>
+                    <span class="pull-right text-muted">
+                      <em>Yesterday</em>
+                    </span>
+                  </div>
+                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
                 </a>
-                <ul class="dropdown-menu dropdown-tasks">
-                    <li>
-                        <a href="#">
-                          <div>
-                              <i class="fa fa-comment fa-fw"></i> New Comment
-                              <span class="pull-right text-muted small">4 minutes ago</span>
-                          </div>
-                      </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                      <a href="#">
-                          <div>
-                              <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                              <span class="pull-right text-muted small">12 minutes ago</span>
-                          </div>
-                      </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                      <a href="#">
-                          <div>
-                              <i class="fa fa-envelope fa-fw"></i> Message Sent
-                              <span class="pull-right text-muted small">4 minutes ago</span>
-                          </div>
-                      </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                      <a href="#">
-                          <div>
-                              <i class="fa fa-tasks fa-fw"></i> New Task
-                              <span class="pull-right text-muted small">4 minutes ago</span>
-                          </div>
-                      </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                      <a href="#">
-                          <div>
-                              <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                              <span class="pull-right text-muted small">4 minutes ago</span>
-                          </div>
-                      </a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                      <a class="text-center" href="#">
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                      </a>
-                  </li>
-              </ul>
-              <!-- /.dropdown-alerts -->
-            </li>
-            <!-- /.dropdown -->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <strong>John Smith</strong>
+                    <span class="pull-right text-muted">
+                      <em>Yesterday</em>
+                    </span>
+                  </div>
+                  <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
                 </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-user -->
-            </li>
-            <li>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="text-center" href="#">
+                  <strong>Read All Messages</strong>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </li>
+            </ul>
+            <!-- /.dropdown-messages -->
+          </li>
+          <!-- /.dropdown -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-tasks">
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-comment fa-fw"></i> New Comment
+                    <span class="pull-right text-muted small">4 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                    <span class="pull-right text-muted small">12 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                    <span class="pull-right text-muted small">4 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-tasks fa-fw"></i> New Task
+                    <span class="pull-right text-muted small">4 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="#">
+                  <div>
+                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                    <span class="pull-right text-muted small">4 minutes ago</span>
+                  </div>
+                </a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a class="text-center" href="#">
+                  <strong>See All Alerts</strong>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </li>
+            </ul>
+            <!-- /.dropdown-alerts -->
+          </li>
+          <!-- /.dropdown -->
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+              </li>
+              <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+              </li>
+              <li class="divider"></li>
+              <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+              </li>
+            </ul>
+            <!-- /.dropdown-user -->
+          </li>
+          <li>
             <a href="#" rel="stylesheet" type="text/css">
               <i class="fa fa-home fa-fw"></i>
             </a>
@@ -196,99 +196,37 @@
         </ul>
         <!-- /.navbar-top-links -->
 
-                    <div class="navbar-default sidebar" role="navigation">
-                        <div class="sidebar-nav navbar-collapse">
-                            <ul class="nav" id="side-menu">
-                                <li class="sidebar-search">
-                                    <div class="input-group custom-search-form">
-                                        <input type="text" class="form-control" placeholder="Search...">
-                                        <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </li>
-                                <li class="sidebar-search">
-                                  <label>! Pour la démonstration seulement, sélectionnez le clientId désiré !</label>
-                                    <div class="input-group custom-search-form">
-                                      <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="clientId">
-                                        <option value={{client.clientId}} ng-repeat="client in clients">{{client.clientId}}</option>
-                                      </select>
-                                    </div>
-                                </li>
-                                    <!-- /input-group -->
-                                <li class="sidebar-search">
-                                    <div class="input-group custom-search-form">
-                                      <label>Sélectionnez une question</label>
-                                      <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" ng-init="message.deliveryDate = true">
-                                        <option value={{message._id}} ng-repeat="message in messages | filter:clientId:search">{{message.title}}</option>
-                                      </select>
-                                    </div>
-                                  </li>
-                                    <!-- /input-group -->
-                                <li>
-                                    <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Tableau de bord </a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-table fa-fw"></i> Messages envoyés <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a ng-href="#/message/{{message.clientId}}"> Messages en cours <span class="fa arrow"></span></a>
-                                            <ul class="nav nav-third-level">
-                                            <li>
-                                              <!-- lien vers messagesdetails.html -->
-                                              <a ng-href="#/message/{{message.clientId}}"> Messages en cours détails </a>
-                                            </li>
-                                          </ul>
-                                        </li>
-                                        <li>
-                                            <a ng-href="#/message/{{message.clientId}}"> Messages estimés <span class="fa arrow"></span></a>
-                                            <ul class="nav nav-third-level">
-                                            <li>
-                                              <!-- lien vers feedback.html = messagesdonedetails.html -->
-                                              <a ng-href="#/message/{{message.clientId}}"> Messages estimés détails</a>
-                                            </li>
-                                          </ul>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-second-level -->
-                                </li>
-                                <li>
-                                    <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Contact - retour prédiction </a>
-                                </li>
-
-                            </ul>
-                        </div>
-                        <!-- /.sidebar-collapse -->
-                    </div>
-                    <!-- /.navbar-static-side -->
-        <!-- <div class="navbar-default sidebar navbar-collapse" style="margin-top:100px;" role="navigation">
+        <div class="navbar-default sidebar" role="navigation">
           <div class="sidebar-nav navbar-collapse">
-            <ul class="nav" id="side-menu"> -->
-              <!-- <li class="sidebar-search"> -->
-                <!-- <div class="form-group" > -->
-
-                  <!-- <label>! Pour la démonstration seulement, sélectionnez le clientId désiré !</label> -->
-
-                  <!-- <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="clientId">
+            <ul class="nav" id="side-menu">
+              <li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                  <input type="text" class="form-control" placeholder="Search...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                </div>
+                <!-- /input-group -->
+              </li>
+              <li class="sidebar-search" ng-controller="navbarController">
+                <label>! Pour la démonstration seulement, sélectionnez le clientId désiré !</label>
+                Current client : {{ loggedClient.clientId }}
+                <div class="input-group custom-search-form">
+                  <select ng-change="updateCli($event);" class="form-control" name="multipleSelect" id="multipleSelect" ng-model="clientId">
                     <option value={{client.clientId}} ng-repeat="client in clients">{{client.clientId}}</option>
-                  </select> -->
-
-                  <!-- <label>Sélectionnez une question</label>
-                  <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" ng-init="message.deliveryDate = true">
-                    <option value={{message._id}} ng-repeat="message in messages | filter:clientId:search">{{message.title}}</option>
-                  </select> -->
-                <!-- </div> -->
-              <!-- </li> -->
-
-
-            <!-- </ul>
-          </div> -->
-          <!-- /.sidebar-collapse-->
-        <!-- </div> -->
-        <!-- /.navbar-static-side -->
+                  </select>
+                </div>
+              </li>
+              <!-- /input-group -->
+              <li>
+                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Tableau de bord </a>
+              </li>
+            </ul>
+          </div>
+          <!-- /.sidebar-collapse -->
+        </div>
       </nav>
 
       <div id="page-wrapper">
