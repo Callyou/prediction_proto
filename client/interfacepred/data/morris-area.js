@@ -1,9 +1,21 @@
 // area chart
+
+var area = angular.module('areaChart', ['ngRoute']);
+app.controller('messageController', function($scope, $location, $http) {
+    $http.get("/message").success(function(response) {
+      $scope.messages  = response;
+      $scope.contact = "";
+      $scope.messagewithoutdelivery = response.filter(function(lm){console.log(lm);return lm.deliveryDate == null});
+      $scope.messagewithdelivery = response.filter(function(lm){console.log(lm);return lm.deliveryDate != null});
+      $scope.messagewithcontent = response.filter(function(lm){console.log(lm);return lm.content != null});
+    });
+});
+
 new Morris.Area({
         element: 'morris-area-chart',
         data: [{
             period: '2010 Q1',
-            iphone: 2666,
+            iphone: 1234,
             ipad: null,
             itouch: 2647
         }, {
