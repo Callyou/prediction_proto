@@ -46,5 +46,15 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
                         </li>
                         <!-- /.dropdown -->
  ```
+ # Interface client :
+ ## Architecture :
+ 
+- index.html
+  - dashboard.html
+  - messagessent.html
+  - messagesdone.html
+  - feedback.html
+  
+ 
  
                  
