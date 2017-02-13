@@ -51,9 +51,10 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
  
 - index.html
   - dashboard.html
-  - messagessent.html
-  - messagesdone.html
-  - feedback.html
+    - messagessent.html
+    - messagesdone.html
+      - messagedonedetails.html
+      - feedback.html
   
  
  
