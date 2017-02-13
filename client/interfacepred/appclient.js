@@ -19,7 +19,7 @@ function($routeProvider) {
       console.log('ther');
     }
   }).otherwise({
-    templateUrl: '/public/interfacepred/pages/test.html',
+    templateUrl: '/public/interfacepred/pages/dashboard.html',
     controller: 'messageController'
   });
   // .otherwise({
