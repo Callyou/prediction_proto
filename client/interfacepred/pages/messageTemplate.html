@@ -1,4 +1,11 @@
 <div>
   <h1>{{message.title}}</h1>
   message : {{message.textQuestion}}
+  count : {{messagewithdelivery.length}}
+  <a ng-href="#/message/{{message.clientId}}">message envoyés tous</a>
+  <div class="huge"
+  ng-click="showClient2(message)"
+  ng-repeat="message in messages | filter:data.multipleSelect:strict | filter: globalSearch "
+  ng-if="message.deliveryDate == null" value={{client.clientId}}>{{messagewithoutdelivery.length}}</div>
+  <div>Message en cours</div>
 </div>

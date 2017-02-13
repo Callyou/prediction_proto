@@ -100,9 +100,14 @@ MongoClient.connect(url, function (err, db) {
         if(!err) res.send(message)
       })
     })
-
-    // Récuperation d'un client en copiant son _id : localhost:port/client/_id
-    app.get('/client/:id/messages', function(req, res) {
+// Récuperation d'un message en copiant son clientId : localhost:port/message/clientId
+    app.get('/message/:clientId',function(req,res){
+      collection.findOne({"_id": new mongodb.ObjectID(req.params.id)},function(err,message){
+        if(!err) res.send(message)
+      })
+    })
+    // Récuperation d'un client en copiant son _id : localhost:port/client/_id et l'associant au clientId de message
+    app.get('/client/:clientId/messages', function(req, res) {
       collection.find({"clientId": req.params.id}).toArray(function(err, messages) {
         if(!err) console.log(messages); res.send(messages)
       })

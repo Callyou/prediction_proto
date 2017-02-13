@@ -30,6 +30,9 @@
   <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
+  <!-- Datatables -->
+  <link href="https://code.jquery.com/jquery-1.12.4.js" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
   <!-- Custom Fonts -->
   <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -57,19 +60,6 @@
           <a href="#" rel="stylesheet" type="text/css"> <img src="..\img\logokapupa.png" style="height:60px;" ></a>
         </div>
         <!-- /.navbar-header -->
-<!-- barre de recherche -->
-        <!-- <div class="col-sm-6 col-md-6">
-          <form class="navbar-form" role="search">
-            <div class="input-group" style="padding-left:50px;width:550px;">
-              <input type="text" class="form-control" placeholder="Search" name="q" ng-model="globalSearch.$" >
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-              </div>
-            </div>
-          </form>
-
-        </div> -->
-
         <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -227,8 +217,8 @@
                                         <option value={{client.clientId}} ng-repeat="client in clients">{{client.clientId}}</option>
                                       </select>
                                     </div>
-                                    <!-- /input-group -->
                                 </li>
+                                    <!-- /input-group -->
                                 <li class="sidebar-search">
                                     <div class="input-group custom-search-form">
                                       <label>Sélectionnez une question</label>
@@ -236,9 +226,8 @@
                                         <option value={{message._id}} ng-repeat="message in messages | filter:clientId:search">{{message.title}}</option>
                                       </select>
                                     </div>
+                                  </li>
                                     <!-- /input-group -->
-                                </li>
-
                                 <li>
                                     <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Tableau de bord </a>
                                 </li>
@@ -246,10 +235,22 @@
                                     <a href="#"><i class="fa fa-table fa-fw"></i> Messages envoyés <span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="flot.html"> Messages en cours</a>
+                                            <a ng-href="#/message/{{message.clientId}}"> Messages en cours <span class="fa arrow"></span></a>
+                                            <ul class="nav nav-third-level">
+                                            <li>
+                                              <!-- lien vers messagesdetails.html -->
+                                              <a ng-href="#/message/{{message.clientId}}"> Messages en cours détails </a>
+                                            </li>
+                                          </ul>
                                         </li>
                                         <li>
-                                            <a href="morris.html"> Messages estimés</a>
+                                            <a ng-href="#/message/{{message.clientId}}"> Messages estimés <span class="fa arrow"></span></a>
+                                            <ul class="nav nav-third-level">
+                                            <li>
+                                              <!-- lien vers feedback.html = messagesdonedetails.html -->
+                                              <a ng-href="#/message/{{message.clientId}}"> Messages estimés détails</a>
+                                            </li>
+                                          </ul>
                                         </li>
                                     </ul>
                                     <!-- /.nav-second-level -->
@@ -305,7 +306,6 @@
 
     <script src="../vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>

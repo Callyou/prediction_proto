@@ -9,21 +9,44 @@ function($routeProvider) {
     controller: function($scope, $http) {
       console.log('hello');
     }
-  }).when('/message/:messageId', {
-    templateUrl: '/public/interfacepred/pages/messageTemplate.html',
-    controller: 'MessageViewCtrl'
   })
-  .when('/other', {
-    template: 'KAAAAAAAAAAWWWWWWWWWWAIIII + other',
-    controller: function($scope, $http) {
-      console.log('ther');
+  .when('/message/:clientId', {
+    templateUrl: '/public/interfacepred/pages/messageTemplate.html',
+    controller: function($scope, $http, $routeParams) {
+      console.log($routeParams);
+      $http.get("/message/"+$routeParams.clientId)
+     .success(function(response) {
+       $scope.message = response;
+       console.log($routeParams.clientId);
+     });
     }
-  }).otherwise({
-    templateUrl: '/public/interfacepred/pages/dashboard.html',
+ })
+  // .when('/message/:clientId', {
+  //   templateUrl: '/public/interfacepred/pages/messagessent.html',
+  //   controller: 'MessageViewCountCtrl'
+  // })
+  // .when('/client/:clientId', {
+  //   templateUrl: '/public/interfacepred/pages/messagesdone.html',
+  //   controller: 'MessageCountViewCtrl'
+  // })
+  // .when('/client/:clientId', {
+  //   templateUrl: '/public/interfacepred/pages/messagesdetailsdone.html',
+  //   controller: 'MessageCountViewCtrl'
+  // })
+  // .when('/client/:clientId', {
+  //   templateUrl: '/public/interfacepred/pages/feedback.html',
+  //   controller: 'MessageCountViewCtrl'
+  // })
+  .otherwise({
+    templateUrl: '/public/interfacepred/pages/messagessent.html',
     controller: 'messageController'
   });
   // .otherwise({
   //   templateUrl: '/public/interfacepred/pages/selectMessage.html',
+  //   controller: 'messageController'
+  // });
+  // .otherwise({
+  //   templateUrl: '/public/interfacepred/pages/selectMessagebase.html',
   //   controller: 'messageController'
   // });
 }]);
@@ -31,6 +54,14 @@ function($routeProvider) {
 app.controller('MessageViewCtrl', function($scope, $http, $routeParams) {
   console.log($routeParams);
   $http.get("/message/"+$routeParams.messageId)
+  .success(function(response) {
+    $scope.message = response;
+  });
+});
+
+app.controller('MessageCountViewCtrl', function($scope, $http, $routeParams) {
+  console.log($routeParams);
+  $http.get("/message/"+$routeParams.clientId)
   .success(function(response) {
     $scope.message = response;
   });
@@ -57,9 +88,21 @@ app.controller('messageController', function($scope, $location, $http) {
     .success(function(response) {
       $scope.messages  = response;
       $scope.contact = "";
-      $scope.messagewithoutdelivery = response.filter(function(lm){console.log(lm);return lm.deliveryDate == null});
-      $scope.messagewithdelivery = response.filter(function(lm){console.log(lm);return lm.deliveryDate != null});
-      $scope.messagewithcontent = response.filter(function(lm){console.log(lm);return lm.content != null});
+      $scope.messagewithoutdelivery = response.filter(function(lm){
+        // $scope.hello = response.filter(function(ab){
+        //   return ab.clientId == client.clientId
+        // });
+        console.log(lm.deliveryDate);
+        return lm.deliveryDate == null
+      });
+      $scope.messagewithdelivery = response.filter(function(lm){
+        console.log(lm);
+        return lm.deliveryDate != null
+      });
+      $scope.messagewithcontent = response.filter(function(lm){
+        console.log(lm);
+        return lm.content != null
+      });
     });
 
 
@@ -80,8 +123,17 @@ app.controller('messageController', function($scope, $location, $http) {
     $location.path('#/user' + message._id);
   };
 
+  $scope.clickMsg2 = function($event, message) {
+    $location.url('#' + message.clientId);
+    console.log("clicked message:", message);
+  }
+
+  $scope.showClient2 = function(message) {
+    $location.path('#/user' + message.clientId);
+  };
+
   $scope.addContact = function(message){
-    console.log("lol", $scope.contact, message, JSON.stringify($scope.contact));
+    console.log($scope.contact, message, JSON.stringify($scope.contact));
     $http.post( '/message', $scope.contact ).success(function(response){
       console.log("res", response);
     })
@@ -94,10 +146,6 @@ app.controller('listController',function($scope,$http){
   $http.get("/client").success(function(response){
 
     $scope.clients=response;
-
-    //var toto = $filter('filter')( $scope.clients, { type:  ["Restaurant"] });
-    //toto=response;
-    //$scope.clientName ='toto';
     $scope.test = function(client){
 
       $('.page1').hide();
@@ -129,13 +177,7 @@ app.controller('selectTypeClient', ['$scope', function($scope) {
 
 app.controller('listControllerMsg',function($scope,$http){
   $http.get("/message").success(function(response){
-
-    // var type=({{message.title}});
-    // console.log(response);
     $scope.messages=response;
-
-    //var toto = $filter('filter')( $scope.clients, { type:  ["Restaurant"] });
-    //toto=response;
   })
 
 });
@@ -144,10 +186,6 @@ app.controller('listControllerMsg',function($scope,$http){
 
 app.controller('selectTypeMsg', ['$scope', function($scope) {
   $scope.data = {
-
     multipleSelect: []
-
   };
-
-
 }]);
