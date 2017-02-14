@@ -6,7 +6,7 @@ app.controller('dataTableCtrl', function($scope, $http, $routeParams, loggedClie
   .success(function(response) {
     $scope.message = response;
   });
-  $scope.quantity = 1;
+  $scope.quantity = 10;
 });
 
 app.config(['$routeProvider',
@@ -27,12 +27,12 @@ app.config(['$routeProvider',
         switch ($routeParams.messageType) {
           case 'messagewithoutdelivery':
               $scope.messages = messages.filter(function(lm){
-                return lm["deliveryDate "] == null;
+                return lm.deliveryDate == null;
               });
             break;
           case 'messagewithdelivery':
               $scope.messages = messages.filter(function(lm){
-                return lm["deliveryDate "] != null;
+                return lm.deliveryDate !== null;
               });
             break;
           case 'messagewithcontent':
