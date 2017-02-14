@@ -1,16 +1,24 @@
 
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute','datatables']);
+
+app.controller('dataTableCtrl', function($scope, $http, $routeParams, loggedClient) {
+  $http.get("/message/"+$routeParams._id)
+  .success(function(response) {
+    $scope.message = response;
+  });
+});
 
 app.config(['$routeProvider',
   function($routeProvider) {
-    $routeProvider.when('/message/:messageId', {
+    $routeProvider.when('/message/:_id', {
       templateUrl: '/public/interfacepred/pages/messageTemplate.html',
-      controller: function($scope, $http, $routeParams) {
-        $http.get("/message/"+$routeParams.clientId)
-        .success(function(response) {
-          $scope.message = response;
-        });
-      }
+      controller : 'MessageViewCtrl'
+      // controller: function($scope, $http, $routeParams, loggedClient) {
+      //   $http.get("/message/"+$routeParams._id)
+      //   .success(function(response) {
+      //     $scope.message = response;
+      //   });
+      // }
     }).when('/messagelist', {
       templateUrl: '/public/interfacepred/pages/messageList.html',
       controller: function($scope, $http, $routeParams, loggedClient) {
@@ -69,7 +77,7 @@ app.service('loggedClient', function( $http, $location, $route ) {
 
 
 app.controller('MessageViewCtrl', function($scope, $http, $routeParams) {
-  $http.get("/message/"+$routeParams.messageId)
+  $http.get("/message/"+$routeParams._id)
   .success(function(response) {
     $scope.message = response;
   });
