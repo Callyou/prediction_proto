@@ -1,11 +1,12 @@
 
-var app = angular.module('myApp', ['ngRoute','datatables']);
+var app = angular.module('myApp', ['ngRoute']);
 
 app.controller('dataTableCtrl', function($scope, $http, $routeParams, loggedClient) {
   $http.get("/message/"+$routeParams._id)
   .success(function(response) {
     $scope.message = response;
   });
+  $scope.quantity = 1;
 });
 
 app.config(['$routeProvider',
