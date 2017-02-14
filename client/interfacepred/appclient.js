@@ -1,31 +1,11 @@
 
 var app = angular.module('myApp', ['ngRoute']);
 
-app.controller('dataTableCtrl', function($scope, $http, $routeParams, loggedClient) {
-  $http.get("/message/"+$routeParams._id)
-  .success(function(response) {
-    $scope.message = response;
-  });
-  $scope.quantity = 10;
-<<<<<<< HEAD
-=======
-  $scope.orderByMe = function(x) {
-    $scope.myOrderBy = x;
-  }
->>>>>>> a4cfb0e6c5489b0f7a05034b2750878979abee6e
-});
-
 app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.when('/message/:_id', {
       templateUrl: '/public/interfacepred/pages/messageTemplate.html',
       controller : 'MessageViewCtrl'
-      // controller: function($scope, $http, $routeParams, loggedClient) {
-      //   $http.get("/message/"+$routeParams._id)
-      //   .success(function(response) {
-      //     $scope.message = response;
-      //   });
-      // }
     }).when('/messagelist', {
       templateUrl: '/public/interfacepred/pages/messageList.html',
       controller: function($scope, $http, $routeParams, loggedClient) {
