@@ -4,8 +4,8 @@ var app = angular.module('myApp', ['ngRoute']);
 app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.when('/message/:_id', {
-      templateUrl: '/public/interfacepred/pages/messageTemplate.html',
-      controller : 'MessageViewCtrl'
+      templateUrl: '/public/interfacepred/pages/messagedetails.html',
+      controller : 'MessageViewDetailsCtrl'
     }).when('/messagelist', {
       templateUrl: '/public/interfacepred/pages/messageList.html',
       controller: function($scope, $http, $routeParams, loggedClient) {
@@ -13,7 +13,7 @@ app.config(['$routeProvider',
         switch ($routeParams.messageType) {
           case 'messagewithoutdelivery':
               $scope.messages = messages.filter(function(lm){
-                return lm.deliveryDate == null;
+                return lm["deliveryDate "] == null;
               });
             break;
           case 'messagewithdelivery':
@@ -29,7 +29,14 @@ app.config(['$routeProvider',
           default:
             $scope.messages = messages;
         }
+        $scope.quantity = 10;
+        $scope.orderByMe = function(x) {
+          $scope.myOrderBy = x;
+        }
       }
+    }).when('/messagelistdone', {
+      templateUrl: '/public/interfacepred/pages/messageListdone.html',
+      controller : 'MessageViewCtrl'
     }).otherwise({
       templateUrl: '/public/interfacepred/pages/1dashboard.html',
       controller: 'dashboardController'
@@ -62,12 +69,17 @@ app.service('loggedClient', function( $http, $location, $route ) {
   };
 });
 
+app.controller('MessageViewDetailsCtrl', function($scope, $http, $routeParams, loggedClient) {
+ $scope.message = loggedClient.getMessages().filter(function(lm){return lm._id == $routeParams._id;})[0];
+ console.log($scope.message)
+});
 
-app.controller('MessageViewCtrl', function($scope, $http, $routeParams) {
-  $http.get("/message/"+$routeParams._id)
-  .success(function(response) {
-    $scope.message = response;
-  });
+app.controller('MessageViewCtrl', function($scope, $http, $routeParams, loggedClient) {
+ $scope.messages = loggedClient.getMessages();
+ $scope.quantity = 10;
+ $scope.orderByMe = function(x) {
+   $scope.myOrderBy = x;
+ }
 });
 
 app.controller('dashboardController', function($location, $scope, $routeParams, loggedClient) {
