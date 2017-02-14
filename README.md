@@ -8,17 +8,17 @@
   ```
 - installer nodejs npm
 - installer express
-- dans `bin/` où a été installé MongoDB lancer le serveur mongod.exe, mongo.exe 
+- dans `bin/` où a été installé MongoDB lancer le serveur mongod.exe, mongo.exe
 - dans le repertoire git du projet preditcion_proto/server/, ouvrir un invité de commande et lancer :
 ```sh
  npm install mongodb
- npm install express 
+ npm install express
  npm install body-parser
  npm install method-override
  npm install mongoose
  node connexion.js
 ```
-Possibilité d'installer le css et le front-end avec 
+Possibilité d'installer le css et le front-end avec
 ```sh
  npm install bootstrap
  npm install angular
@@ -26,7 +26,7 @@ Possibilité d'installer le css et le front-end avec
 Aller dans un navigateur web à l'adresse pour voir le contenu de la base affiché : `http://localhost:8888/`
 
 # IHM CSS HTML
-## Pour rajouter un Dropdown menu ajouter après les dropdown existant 
+## Pour rajouter un Dropdown menu ajouter après les dropdown existant
 ```sh
                         <!-- /.dropdown -->
                         <li class="dropdown">
@@ -48,14 +48,39 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
  ```
  # Interface client :
  ## Architecture :
- 
+
 - index.html
   - dashboard.html
     - messagessent.html
       - messagessentdetails.html
     - messagesdone.html
-      - messagesdonedetails.html 
-  
- 
- 
-                 
+      - messagesdonedetails.html
+
+## html :
+- messageList.html
+```sh
+      <div class="panel-body" style="overflow-y:scroll">
+        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example1">
+            <tbody id="table">
+                <td>id</td>
+                <td>Date de création</td>
+                <td>Date d échéance </td>
+                <td>Titre</td>
+                <tr ng-repeat="message in messages">
+                      <td>{{message._id}}</td>
+                      <td>{{message.dueDate}}</td>
+                      <td>{{message.title}}</td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+```
+- index.html
+- dashboard.html
+```sh
+      
+```
+- messagessent.html
+- messagessentdetails.html
+- messagesdone.html
+- messagesdonedetails.html

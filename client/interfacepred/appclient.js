@@ -1,17 +1,6 @@
 
 var app = angular.module('myApp', ['ngRoute']);
 
-// app.controller('dataTableCtrl', function($scope, $http, $routeParams, loggedClient) {
-//   $http.get("/message/"+$routeParams._id)
-//   .success(function(response) {
-//     $scope.message = response;
-//   });
-//   $scope.quantity = 10;
-//   $scope.orderByMe = function(x) {
-//     $scope.myOrderBy = x;
-//   }
-// });
-
 app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.when('/message/:_id', {
@@ -24,13 +13,12 @@ app.config(['$routeProvider',
         switch ($routeParams.messageType) {
           case 'messagewithoutdelivery':
               $scope.messages = messages.filter(function(lm){
-                console.log(lm)
                 return lm["deliveryDate "] == null;
               });
             break;
           case 'messagewithdelivery':
               $scope.messages = messages.filter(function(lm){
-                return lm["deliveryDate "] != null;
+                return lm.deliveryDate !== null;
               });
             break;
           case 'messagewithcontent':

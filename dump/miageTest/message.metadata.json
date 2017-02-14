@@ -1,1 +1,1 @@
-{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"miageTest.message"}]}
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"miageTest.message"},{"v":2,"key":{"clientId":1.0},"name":"clientId_1","ns":"miageTest.message"},{"v":2,"key":{"messageId":1.0},"name":"messageId_1","ns":"miageTest.message"}]}
