@@ -1,0 +1,12 @@
+<div class="panel-body">
+  <p>Recherche <input type="text" ng-model="search"></p>
+  <p>Nombre de lignes au total : {{messages.length}}</p>
+  <p>Veuillez choisir le nombre de lignes à afficher <input type="text" ng-model="quantity"></p></p>
+
+        <td>Message id : {{message._id}}</td>
+        <td>Total réponses : {{message.answer.stat.total}}</td>
+        <td>Oui : {{message.answer.stat.positive}}</td>
+        <td>Non : {{message.answer.stat.negative}}</td>
+        <td>Résultat de la prédiction : {{((message.feedBack.realNb - message.estimation)/ message.feedBack.realNb)*100}} %
+        </td>
+  </div>
