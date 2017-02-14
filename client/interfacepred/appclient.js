@@ -6,7 +6,10 @@ app.controller('dataTableCtrl', function($scope, $http, $routeParams, loggedClie
   .success(function(response) {
     $scope.message = response;
   });
-  $scope.quantity = 1;
+  $scope.quantity = 10;
+  $scope.orderByMe = function(x) {
+    $scope.myOrderBy = x;
+  }
 });
 
 app.config(['$routeProvider',

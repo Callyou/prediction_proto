@@ -1,19 +1,23 @@
 <div ng-controller="dataTableCtrl" class="panel-body">
 	<p>Recherche <input type="text" ng-model="search"></p>
-	<p>Il y a {{messages.length}} lignes en tout</p>
+	<p>Nombre de lignes au total : {{messages.length}}</p>
 	<p>Veuillez choisir le nombre de lignes à afficher <input type="text" ng-model="quantity"></p></p>
 
 	<br>
 	<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example1">
 		<thead>
 			<tr>
-			<th>id</th>
-			<th>Date de création</th>
-			<th>Date d'échéance</th>
-			<th>Titre</th>
+			<th ng-click="orderByMe('id')">id <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			</th>
+			<th ng-click="orderByMe('creationDate')">Date de création <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			</th>
+			<th ng-click="orderByMe('dueDate')">Date d'échéance <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			</th>
+			<th ng-click="orderByMe('title')">Titre <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			</th>
 		</tr>
 	</thead>
-	<tbody id="table" ng-repeat="message in messages | filter:search | orderBy:'creationDate'| limitTo:quantity ">
+	<tbody id="table" ng-repeat="message in messages | filter:search | orderBy:myOrderBy| limitTo:quantity ">
 			<tr>
 				<td><a ng-href="#/message?messageId={{messages}}">{{message._id}}</a></td>
 				<td>{{message.creationDate}}</td>
