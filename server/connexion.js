@@ -4,6 +4,11 @@ var mongodb= require('mongodb');// chargement module mongodb
 var exp = require('express'); // chargement module express
 // instatiation du module
 var app = exp();
+// chargement d'autre fichier javascript
+var fs = require("fs")
+var vm = require('vm')
+var content = fs.readFileSync("calculEstimation.js");
+vm.runInThisContext(content);
 // Création d'une connexion client
 var MongoClient = mongodb.MongoClient
 // le lien de la base données sur le serveur de base de données
@@ -25,8 +30,8 @@ MongoClient.connect(url, function (err, db) {
     res.send('HELLOOO');
   });
 
-  // retourne 
-  
+  // retourne
+
 
   console.log('connexion etablie')
   // code qui exploite la base db
@@ -75,6 +80,35 @@ MongoClient.connect(url, function (err, db) {
     })
   })
 
+// *** Ajout de la propriété estimation dals la collection message :
+db.collection('message',function(err,collection){
+  collection.find().toArray( function(err,messages) {
+
+    for(var i=0;i < messages.length;i++)
+    {
+      var clientsid=messages[i].clientId;
+      if(messages[i].answer!=null)
+      {
+        if(messages[i].estimation==null)
+        {
+
+          collection.update({_id:messages[i]._id},
+                            {$set:{estimation:
+                                  calculEstimation(messages[i].nbPull.websitePull,messages[i].nbPull.mobilePull,messages[i].answer.stat.positive,messages[i].answer.stat.positive)}});
+        }
+        else
+        {
+          console.log('Estimation existe');
+        }
+      }
+      else
+      {
+        console.log('il faut ajouter les réponses');
+      }
+    }
+  })
+})
+////// fin insertion estimation
   //****Accès à la base message ***
   db.collection('message',function(err,collection){
     // récuperation de  tous les messages : localhost:port/message
@@ -90,11 +124,7 @@ MongoClient.connect(url, function (err, db) {
       collection.insert(req.body, function(err, doc){
         res.json(doc);
       });
-      //collection.insert(req.body,function(err, message){
-      //   res.json(doc);
-      //   if(!err) res.send(message);
-      //   console.log(res);
-      // })
+
     })
     // Récuperation d'un message en copiant son _id : localhost:port/message/_id
     app.get('/message/:id',function(req,res){
@@ -123,22 +153,7 @@ MongoClient.connect(url, function (err, db) {
 
   })
 });
-//Pour utilisation des routes static
-/*app.use('/temp',express.static('./temp'))*/
-//ordre important
-/*app.use(express.static('temp'),function(req,res,next){
-res.send('HLLO');
-})*/
-// app.get(path,function(req,res){})
-/* collection.insert(
-{
-first_name :'Caliane',
-Last_name: 'You'
-}
-function(err,livre){
-if(!err) console.log('Ok!')
-}
-)*/
+
 
 var server = app.listen(8888);// démarrer l'appli sur le port 8888 si vous voulez, vous pouvez mettre n'importe quel port
 //server.close();
