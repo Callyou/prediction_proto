@@ -1,10 +1,21 @@
-$(function() {
+// area chart
 
-    Morris.Area({
+// var area = angular.module('areaChart', ['ngRoute']);
+// app.controller('messageController', function($scope, $location, $http) {
+//     $http.get("/message").success(function(response) {
+//       $scope.messages  = response;
+//       $scope.contact = "";
+//       $scope.messagewithoutdelivery = response.filter(function(lm){console.log(lm);return lm.deliveryDate == null});
+//       $scope.messagewithdelivery = response.filter(function(lm){console.log(lm);return lm.deliveryDate != null});
+//       $scope.messagewithcontent = response.filter(function(lm){console.log(lm);return lm.content != null});
+//     });
+// });
+
+new Morris.Area({
         element: 'morris-area-chart',
         data: [{
             period: '2010 Q1',
-            iphone: 2666,
+            iphone: 1234,
             ipad: null,
             itouch: 2647
         }, {
@@ -60,58 +71,3 @@ $(function() {
         hideHover: 'auto',
         resize: true
     });
-
-    Morris.Donut({
-        element: 'morris-donut-chart',
-        data: [{
-            label: "Download Sales",
-            value: 12
-        }, {
-            label: "In-Store Sales",
-            value: 30
-        }, {
-            label: "Mail-Order Sales",
-            value: 20
-        }],
-        resize: true
-    });
-
-    Morris.Bar({
-        element: 'morris-bar-chart',
-        data: [{
-            y: '2006',
-            a: 100,
-            b: 90
-        }, {
-            y: '2007',
-            a: 75,
-            b: 65
-        }, {
-            y: '2008',
-            a: 50,
-            b: 40
-        }, {
-            y: '2009',
-            a: 75,
-            b: 65
-        }, {
-            y: '2010',
-            a: 50,
-            b: 40
-        }, {
-            y: '2011',
-            a: 75,
-            b: 65
-        }, {
-            y: '2012',
-            a: 100,
-            b: 90
-        }],
-        xkey: 'y',
-        ykeys: ['a', 'b'],
-        labels: ['Series A', 'Series B'],
-        hideHover: 'auto',
-        resize: true
-    });
-    
-});
