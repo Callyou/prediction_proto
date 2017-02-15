@@ -113,19 +113,19 @@
                      <input class="form-control" id="deliverydate" name="date" placeholder="MM/DD/YYY" type="text">
                      <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
-					  
+
                     </span>
-				
+
                   </div>
 
                 </div>
               </li>
 
-                   
+
               <li class="sidebar-search" id="question">
                 <div class="form-group" ng-controller="FicheClientController">
-             
-              
+
+
            <div class="form-group" ng-controller="SelectQuestionController">
 
 
@@ -136,14 +136,14 @@
 
 
                     </select>
-               
+
                 </div>
                    </div>
-                
+
                 <!-- C EST ICI QU'IL FAUT afficher les questions selon l'id-->
             <input id="champcaché"></input>
               </li>
-           
+
 
             </ul>
           </div>
@@ -177,9 +177,9 @@
           </div>
 
           <div ui-sref="home" ui-view="liste">
-         
+
 		  </div>
-     
+
 
 
 
@@ -193,7 +193,7 @@
 
     </div>
     <!-- /#page-wrapper -->
-  
+
 
 
 <!-- /#wrapper -->
@@ -226,6 +226,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>
 <script src="../appkapupa.js"></script>
+<script src="../js/KapupaController/ClientKapupaController.js"></script>
+<script src="../js/KapupaController/FicheClientController.js"></script>
+<script src="../js/KapupaController/MessageKapupaController.js"></script>
+<script src="../js/KapupaController/FiltreQuestionController.js"></script>
+<script src="../js/KapupaController/FiltreTypeDateController.js"></script>
 
 <script>
 /*
@@ -256,8 +261,8 @@ function test(client){
        var select = document.getElementById("questions");
 
        var length = select.options.length;
-       for (i = 0; i < length; i++) 
-       { 
+       for (i = 0; i < length; i++)
+       {
         select.options[i] = null;
       }
 
@@ -266,8 +271,8 @@ function test(client){
         var select = document.getElementById("questions");
 
         var length = select.options.length;
-        for (i = 0; i < length; i++) 
-        { 
+        for (i = 0; i < length; i++)
+        {
           select.options[i] = null;
         }
 
@@ -277,7 +282,7 @@ function test(client){
         $('.page1').show();
         $('.page2').hide();
 
-        
+
       });
 
 

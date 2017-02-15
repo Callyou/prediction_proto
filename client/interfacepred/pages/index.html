@@ -1,12 +1,12 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
-  <!-- morris chart -->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+  <script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
+  <!-- Morris Charts CSS -->
+  <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,22 +26,15 @@
   <!-- Custom CSS -->
   <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
-  <!-- Morris Charts CSS -->
-  <!-- <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/> -->
+  <!-- Morris Charts JavaScript -->
+  <script src="../vendor/raphael/raphael.min.js"></script>
+  <script src="../vendor/morrisjs/morris.min.js"></script>
 
   <!-- Datatables -->
   <link href="https://code.jquery.com/jquery-1.12.4.js" rel="stylesheet">
   <link href="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js">
   <!-- Custom Fonts -->
   <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
 
 </head>
 <body ng-app="myApp">
@@ -223,46 +216,58 @@
               <li>
                 <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Tableau de bord </a>
               </li>
-            </ul>
+              <li>
+                <a href="#"><i class="fa fa-table fa-fw"></i> Messages envoyés <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                  <li>
+                    <a ng-href="#/messagelist?messageType=messagewithoutdelivery"><i class="fa fa-cogs" aria-hidden="true"></i>  Messages en cours</a>
+                  </li>
+                  <li>
+                    <a ng-href="#/messagelist?messageType=messagewithdelivery"><i class="fa fa-check-square-o" aria-hidden="true"></i> Messages estimés</a>
+                  </li>
+                  <li>
+                    <a ng-href="#/messagelistdone?messageType=messagewithcontent"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Retour sur prédiction</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- /.sidebar-collapse -->
+            </div>
+          </nav>
+
+          <div id="page-wrapper">
+
+            <div ng-view></div>
+
+            <!-- /#page-wrapper -->
           </div>
-          <!-- /.sidebar-collapse -->
+
         </div>
-      </nav>
 
-      <div id="page-wrapper">
+        <!-- /#wrapper -->
 
-        <div ng-view></div>
+        <!-- jQuery -->
 
-        <!-- /#page-wrapper -->
-      </div>
+        <script src="../vendor/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-    </div>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- /#wrapper -->
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 
-    <!-- jQuery -->
+        <!-- Morris Charts JavaScript -->
+        <script src="../vendor/raphael/raphael.min.js"></script>
+        <script src="../vendor/morrisjs/morris.min.js"></script>
+        <script src="../data/morris-area.js"></script>
 
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="../dist/js/sb-admin-2.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../appclient.js"></script>
+      </body>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <!-- <script src="../vendor/raphael/raphael.min.js"></script>
-    <script src="../vendor/morrisjs/morris.min.js"></script>
-    <script src="../data/morris-area.js"></script> -->
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
-
-    <script src="../appclient.js"></script>
-  </body>
-
-  </html>
+      </html>
