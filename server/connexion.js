@@ -25,8 +25,8 @@ MongoClient.connect(url, function (err, db) {
     res.send('HELLOOO');
   });
 
-  // retourne 
-  
+  // retourne
+
 
   console.log('connexion etablie')
   // code qui exploite la base db
@@ -84,21 +84,38 @@ MongoClient.connect(url, function (err, db) {
           console.log(res)
       })
     })
-
+// fonction ajout d'un attribut entier
     app.post('/message',function(req, res){
       console.log(req.body);
       collection.insert(req.body, function(err, doc){
         res.json(doc);
       });
-      //collection.insert(req.body,function(err, message){
-      //   res.json(doc);
-      //   if(!err) res.send(message);
-      //   console.log(res);
-      // })
     })
+// a revoir error callback
+    app.delete('/message/:id',function(req, res){
+      var id = req.params.id;
+        console.log(id);
+      collection.remove({_id : new mongodb.ObjectID(id)}, function(err, doc){
+        res.json(doc);
+        console.log(res.json(doc));
+      });
+    });
+    app.get('/message/:id', function (req, res) {
+      var id = req.params.id;
+      console.log(id);
+      collection.findOne({_id: mongodb.ObjectID(id)}, function(err, doc){
+        res.json(doc);
+      })
+    });
+    app.post('/message/:id', function (req, res) {
+      var id = req.params.id;
+
+      collection.update({_id: id}, req.body);
+      res.send(req.body)
+    });
     // Récuperation d'un message en copiant son _id : localhost:port/message/_id
     app.get('/message/:id',function(req,res){
-      collection.findOne({"_id": new mongodb.ObjectID(req.params.id)},function(err,message){
+      collection.findOne({"_id": new mongodb.ObjectID(req.params.id)},function(err, message){
         if(!err) res.send(message)
       })
     })
