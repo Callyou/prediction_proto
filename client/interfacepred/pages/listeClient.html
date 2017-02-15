@@ -1,0 +1,36 @@
+<div class="panel-body">
+         
+
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+
+              <tbody id="table">
+                <tr  class="odd gradeX" ng-repeat="client in clients| filter:{type:data.multipleSelect} |filter: globalSearch ">
+                  
+                  <td><a href="" ui-sref="home"id="a" ng-click="getclients(client);">{{client.name}}</a></td>
+
+
+                </tr>
+
+              </tbody>
+
+          </div>
+		  
+
+<div class="panel-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+
+            <tbody id="table"  ng-controller='FilterController' >
+                <tr ng-repeat="client in clientsobj" id="clients" class="odd gradeX" >
+                  <td >
+                      <a href="" ui-sref="home" ng-click="getclients(client);">{{ client.name }}</a>
+                  </td>
+              
+
+
+                </tr>
+
+              </tbody>
+            </table>
+
+   </div>
+		  

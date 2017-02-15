@@ -1,0 +1,117 @@
+
+  <div class="row" id="titre">
+    <div class="col-lg-12" style="text-align:center;" >
+      <h3 class="page-header"><span class="nom"></span></h3>
+      <div class="col-lg-12" style="text-align:center;margin-bottom:20px;">
+       <button type="button" class="btn btn-outline btn-danger" >Taux d'erreur global : <span id="tauxerreurglobal"><b>20%</b></span></button>
+     </div>
+
+
+   </div>
+
+
+   <!-- /.col-lg-12 -->
+ </div>
+
+
+ <div class="row" id="ficheclient">
+   <div class="col-md-12">
+
+    <div class="panel panel-warning" ng-controller="FicheClientController" >
+      <div class="panel-heading">
+       Fiche Client
+     </div>
+     <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <ul>
+           <li><b> Nom : </b><span class="nom"></span> </li>
+           <li><b> Ville : </b><span class="ville"></span> </li>
+           <li><b> Adresse : </b><span id="adresse"></span></li>
+         </ul>
+
+       </div>
+       <div class="col-md-6">
+        <ul>
+         <li><b> Contact : </b><span id="contact"></span> </li>
+         <li><b> Site Web : </b><span id="siteweb"></span></li>
+         <li><b> Email : </b><span id="email"></span></li>
+       </ul>
+     </div>
+   </div>
+ </div>
+
+</div>
+</div>
+</div>
+<div id="divquestion">
+<div class="row">
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        total réponse/total questions
+      </div>
+      <div class="panel-body">
+       <div id="donut-example"></div>
+
+      </div>
+
+    </div>
+    <!-- /.col-lg-4 -->
+  </div>
+  
+  <div class="col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      total oui/non
+     </div>
+     <div class="panel-body">
+       <div id="donut-example1"></div>
+    </div>
+
+  </div>
+  <!-- /.col-lg-4 -->
+</div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-4">
+    <div class="panel panel-green">
+      <div class="panel-heading">
+        Résultat de prédiction
+      </div>
+      <div class="panel-body">
+        <p><span id="estimation"></span>couverts</p>
+
+      </div>
+
+    </div>
+    <!-- /.col-lg-4 -->
+  </div>
+  <div class="col-lg-4">
+    <div class="panel panel-yellow">
+      <div class="panel-heading">
+        Retour client
+      </div>
+      <div class="panel-body">
+        <p><span id="retourclient"></span>couverts </p>
+      </div>
+
+    </div>
+    <!-- /.col-lg-4 -->
+  </div>
+  <div class="col-lg-4">
+    <div class="panel panel-red">
+      <div class="panel-heading">
+       Taux d'erreur
+     </div>
+     <div class="panel-body">
+      <p><span id="tauxerreur"></span>%</p>
+    </div>
+
+  </div>
+  <!-- /.col-lg-4 -->
+</div>
+</div>
+</div>

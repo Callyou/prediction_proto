@@ -7,11 +7,11 @@ var app = exp();
 // Création d'une connexion client
 var MongoClient = mongodb.MongoClient
 // le lien de la base données sur le serveur de base de données
-var url = 'mongodb://localhost:27017/miageTest'
+var url = 'mongodb://localhost:27017/miageTest';
+
+
 // pour parser le document envoyé à MongoDB
 var bodyParser = require('body-parser');
-
-
 app.use(bodyParser.json());
 //crée une route a /public et donne acces au fichier qui a dans repertoire client
 app.use('/public', exp.static('../client'));
@@ -25,6 +25,8 @@ MongoClient.connect(url, function (err, db) {
     res.send('HELLOOO');
   });
 
+  // retourne 
+  
 
   console.log('connexion etablie')
   // code qui exploite la base db
@@ -34,7 +36,7 @@ MongoClient.connect(url, function (err, db) {
     app.get('/client',function(req,res){
       collection.find().toArray(function(err,client){
         if(!err) res.send(client)
-        console.log(res)
+          console.log(res)
       })
     })
     app.post('/client',function(req,res){
@@ -57,7 +59,7 @@ MongoClient.connect(url, function (err, db) {
     app.get('/user',function(req,res){
       collection.find().toArray(function(err,user){
         if(!err) res.send(user)
-        console.log(res)
+          console.log(res)
       })
     })
     app.post('/user', function(req,res){
@@ -79,7 +81,7 @@ MongoClient.connect(url, function (err, db) {
     app.get('/message',function(req,res){
       collection.find().toArray(function(err,message){
         if(!err) res.send(message)
-        console.log(res)
+          console.log(res)
       })
     })
 
@@ -109,6 +111,17 @@ MongoClient.connect(url, function (err, db) {
       })
     })
 
+    app.get('/:date',function(req,res){
+        var collection = db.collection('message');
+        //var collection1 = db.collection('client');
+        collection.distinct("clientId",{'deliveryDate': new Date(req.params.date)},function(err, result){
+          if(!err){
+            console.log(result);
+            res.send(result);
+          }
+        });
+  });
+
   })
 });
 //Pour utilisation des routes static
@@ -128,5 +141,5 @@ if(!err) console.log('Ok!')
 }
 )*/
 
-var server = app.listen(8888)// démarrer l'appli sur le port 8888 si vous voulez, vous pouvez mettre n'importe quel port
+var server = app.listen(8888);// démarrer l'appli sur le port 8888 si vous voulez, vous pouvez mettre n'importe quel port
 //server.close();
