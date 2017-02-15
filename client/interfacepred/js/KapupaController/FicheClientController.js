@@ -5,6 +5,7 @@ app.controller('FicheClientController',function($scope,$http){
 
   $http.get("/client").success(function(response){
     $scope.getclients = function(client){
+      ViderLaListeDesQuestions();
       var select = document.getElementById("questions");
       var length = select.options.length;
       for (i = 0; i < length; i++)

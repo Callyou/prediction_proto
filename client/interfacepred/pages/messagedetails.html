@@ -1,12 +1,65 @@
 <div class="panel-body">
-  <p>Recherche <input type="text" ng-model="search"></p>
-  <p>Nombre de lignes au total : {{messages.length}}</p>
-  <p>Veuillez choisir le nombre de lignes à afficher <input type="text" ng-model="quantity"></p></p>
-
-        <td>Message id : {{message._id}}</td>
-        <td>Total réponses : {{message.answer.stat.total}}</td>
-        <td>Oui : {{message.answer.stat.positive}}</td>
-        <td>Non : {{message.answer.stat.negative}}</td>
-        <td>Résultat de la prédiction : {{((message.feedBack.realNb - message.estimation)/ message.feedBack.realNb)*100}} %
-        </td>
-  </div>
+  <p> <label> Titre : </label> {{message.title}} </p>
+  <p> <label> Date de creation : </label> {{message.creationDate}}</p>
+  <p> <label> Date d'echeance :</label> {{message.deliveryDate}}</p>
+  
+  
+  <br>
+   <h2> Nombre d'envoie </h2>
+  <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
+    <thead>
+		<tr>
+			<th ng-click="orderByMe('nbPull')"> Nombre total d'envoie <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			</th>
+			<th ng-click="orderByMe('mobilePull')">Mobile<i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			</th>
+			<th ng-click="orderByMe('websitePull')">Web<i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			</th>	
+		</tr>
+	</thead>
+    <tbody id="table">
+      <tr>
+        <td>{{parseFloat(message.nbPull.mobilePull)+parseFloat(message.nbPull.websitePull)}}</td>
+        <td > {{message.nbPull.mobilePull}} </td>
+        <td > {{message.nbPull.websitePull}}</td>
+      </tr>
+        </tbody>
+      </table>
+	  
+  <h2> Reponses utilisateurs </h2>
+  <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
+    <thead>
+		<tr>
+			<th ng-click="orderByMe('id')">Total reponses utilisateurs <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			</th>
+			<th ng-click="orderByMe('creationDate')">Oui<i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			</th>
+			<th ng-click="orderByMe('deliveryDate')">Non<i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			</th>
+			
+		</tr>
+	</thead>
+    <tbody id="table">
+      <tr>
+        <td>{{message.answer.stat.total}}</td>
+        <td > {{message.answer.stat.positive}} </td>
+        <td > {{message.answer.stat.negative}}</td>
+      </tr>
+        </tbody>
+      </table>
+	  
+  <p> <strong> <h3> Resultat pr�diction : </h3> </strong></p>
+  <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
+    <thead>
+		
+	</thead>
+    <tbody id="table">
+      <tr>
+      
+        <td > {{message.estimation}} </td>
+     
+      </tr>
+        </tbody>
+      </table>
+ 
+</div>
