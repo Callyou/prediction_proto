@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']);
+var app = angular.module('myApp', ['ngRoute','angular.morris']);
 
 app.config(['$routeProvider',
   function($routeProvider) {
@@ -113,7 +113,7 @@ app.controller('MessageViewCtrl', function($scope, $http, $routeParams, loggedCl
         return copyWithTemporaryFeedBack;
       });
     });
-    
+
   }
 
   $scope.messages.map(console.log)
@@ -152,6 +152,16 @@ app.controller('dashboardController', function($location, $scope, $routeParams, 
   $scope.messagewithcontent = $scope.messages.filter(function(lm) {
     return lm.feedBack == null
   });
+
+  $scope.data = $scope.messages.filter(function(lm) { return lm.feedBack != null }).map(function(elem) {
+    return {
+      y: elem.creationDate,
+      b: elem.estimation,
+      a: elem.feedBack.realNb
+    }
+  });
+  console.log($scope.data);
+
 });
 
 app.controller('navbarController', function($scope, $location, $http, loggedClient) {
