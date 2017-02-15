@@ -13,7 +13,7 @@ app.config(['$routeProvider',
         switch ($routeParams.messageType) {
           case 'messagewithoutdelivery':
               $scope.messages = messages.filter(function(lm){
-                return lm["deliveryDate "] == null;
+                return lm.deliveryDate== null;
               });
             break;
           case 'messagewithdelivery':
@@ -71,6 +71,7 @@ app.service('loggedClient', function( $http, $location, $route ) {
 
 app.controller('MessageViewDetailsCtrl', function($scope, $http, $routeParams, loggedClient) {
  $scope.message = loggedClient.getMessages().filter(function(lm){return lm._id == $routeParams._id;})[0];
+ $scope.parseFloat = parseFloat;
  console.log($scope.message)
 });
 
