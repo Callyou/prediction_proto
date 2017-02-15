@@ -1,4 +1,4 @@
-<div ng-controller="dataTableCtrl" class="panel-body">
+<div class="panel-body">
 	<p>Recherche <input type="text" ng-model="search"></p>
 	<p>Nombre de lignes au total : {{messages.length}}</p>
 	<p>Veuillez choisir le nombre de lignes à afficher <input type="text" ng-model="quantity"></p></p>
@@ -19,7 +19,7 @@
 	</thead>
 	<tbody id="table" ng-repeat="message in messages | filter:search | orderBy:myOrderBy| limitTo:quantity ">
 			<tr>
-				<td><a ng-href="#/message?messageId={{messages}}">{{message._id}}</a></td>
+				<td><a ng-href="#/message/{{message._id}}">{{message._id}}</a></td>
 				<td>{{message.creationDate}}</td>
 				<td>{{message.dueDate}}</td>
 				<td>{{message.title}}</td>
