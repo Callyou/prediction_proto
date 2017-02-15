@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Bootstrap Admin Theme</title>
+  <title>Production Kapupa</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -258,38 +258,30 @@ function test(client){
        $('#question').hide();
        $('.page2').hide();
        $("#champcaché").hide();
-       var select = document.getElementById("questions");
-
-       var length = select.options.length;
-       for (i = 0; i < length; i++)
-       {
-        select.options[i] = null;
-      }
+       ViderLaListeDesQuestions();
 
 
-      $('#multipleSelect').bind('click', function(){
-        var select = document.getElementById("questions");
-
-        var length = select.options.length;
-        for (i = 0; i < length; i++)
-        {
-          select.options[i] = null;
-        }
-
-        $('#information').hide();
-        $('#titre').show();
-        $("#question").hide();
-        $('.page1').show();
-        $('.page2').hide();
-
-
+      $('#multipleSelect').on('change', function(){
+          showClientList();
       });
 
-
-
+      $('#deliverydate').on('change', function(){
+          showClientList();
+      });
 
     });
 
+    function showClientList(){
+
+      ViderLaListeDesQuestions();
+
+      $('#questions').val('');
+      $('#information').hide();
+      $('#titre').show();
+      $("#question").hide();
+      $('.page1').show();
+      $('.page2').hide();
+    }
   </script>
 
 </body>
