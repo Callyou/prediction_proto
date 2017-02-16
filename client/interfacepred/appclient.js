@@ -83,12 +83,18 @@ app.service('loggedClient', function( $http, $location, $route ) {
 app.controller('MessageViewDetailsCtrl', function($scope, $http, $routeParams, loggedClient) {
  $scope.message = loggedClient.getMessages().filter(function(lm){return lm._id == $routeParams._id;})[0];
  $scope.parseFloat = parseFloat;
- // $scope.data = $scope.messages.filter(function(lm) { return lm.answer != null }).map(function(elem) {
- //   return {
- //     label: elem.answer.content.positive,
- //     value: elem.feedBack.realNb,
- //   }
- // });
+$scope.messages = loggedClient.getMessages();
+// $scope.parJson = function (json) {
+//    return angular.fromJson(json);
+// }
+//  $scope.data = $scope.messages.filter(function(lm) { return lm.answer != null & lm._id == $routeParams._id;}).map(function(elem) {
+//    return {
+//
+//      y: elem.content[0].positive,
+//      a: elem.answer.stat.positive,
+//      b: elem.answer.stat.negative
+//    }
+//  });
 });
 
 app.controller('MessageViewCtrl', function($scope, $http, $routeParams, loggedClient) {

@@ -41,22 +41,27 @@
 	</thead>
     <tbody id="table">
       <tr>
-        <div ng-app="my.app" ng-controller="MyCtrl">
-  <!-- <div
-  donut-chart
-  donut-data='[
-      {label: "Download Sales", value: 12},
-      {label: "In-Store Sales",value: 30},
-      {label: "Mail-Order Sales", value: 20}
-  ]'
-  donut-colors='["#31C0BE","#c7254e","#98a0d3"]'
-  donut-label-color='"#000000"'
-  donut-background-color='"#ffffff"'
-  donut-formatter='"currency"'>
-  </div> -->
-        <!-- <td>{{message.answer.stat.total}}</td>
+        <!-- <td>
+          <div
+          bar-chart
+          bar-data="data"
+          bar-x='y'
+          bar-y='["a", "b"]'
+          bar-labels='["Nombre réel", "Estimation"]'
+          bar-colors='["#31C0BE", "#c7254e"]'>
+        </div>
+        <div
+      donut-chart
+      donut-data="data"
+      donut-label-color='"#000000"'
+      donut-background-color='"#ffffff"'
+      donut-colors='["#31C0BE","#c7254e"]'
+      >
+      </div>
+    </td> -->
+        <td>{{message.answer.stat.total}}</td>
         <td > {{message.answer.stat.positive}} </td>
-        <td > {{message.answer.stat.negative}}</td> -->
+        <td > {{message.answer.stat.negative}}</td>
       </tr>
         </tbody>
       </table>
