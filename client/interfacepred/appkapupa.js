@@ -27,7 +27,13 @@ function gettauxerreurglobal(array){
     somme+=array[i];
   }
   moyenne=somme/array.length;
-  return moyenne;
+  return roundDecimal(moyenne,2);
+}
+
+function roundDecimal(nombre, precision){
+    var precision = precision || 2;
+    var tmp = Math.pow(10, precision);
+    return Math.round( nombre*tmp )/tmp;
 }
 
 function functionFilterByDate($scope, $http){
