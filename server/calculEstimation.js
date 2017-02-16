@@ -5,3 +5,7 @@ function calculEstimation(msgWeb,msgMob,RepPos,RepNeg){
   var estimation= parseInt(RepPos)-((totalRep/TotalMsg)*10);
   return parseInt(estimation);
 }
+
+function TauxErreur(NbR,Estim){
+ return ((parseInt(NbR)-parseInt(Estim))/parseInt(NbR));
+}
