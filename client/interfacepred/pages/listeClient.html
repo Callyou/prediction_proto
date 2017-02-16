@@ -1,20 +1,30 @@
-<div class="panel-body">
+<div class="panel-body" >
     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-      <tbody class="tbodyForDisplay">
+      <tbody id="tbodyFiltreByTypeClient">
         <tr  class="odd gradeX" ng-repeat="client in clients| filter:{type:data.multipleSelect} |filter: globalSearch ">
           <td><a href="" ui-sref="home"id="a" ng-click="getclients(client);">{{client.name}}</a></td>
         </tr>
+        <tr href="" ui-sref="home" ng-show="!clients.length">
+            <td>
+                <p>Aucun client trouv&eacute; pour votre selection</p>
+            </td>
+        </tr>
       </tbody>
-    </tble>
+    </table>
 </div>
 
-<div class="panel-body">
+<div class="panel-body" id="panel">
     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
-      <tbody  class="tbodyForDisplay" ng-controller='FilterController' >
+      <tbody  id="tbodyFiltredByDate" ng-controller='FilterController' >
         <tr class="odd gradeX" ng-repeat="client in clientsobj |filter: globalSearch">
           <td >
               <a href="" ui-sref="home" ng-click="getclients(client);">{{ client.name }}</a>
           </td>
+        </tr>
+        <tr href="" ui-sref="home" ng-show="!clientsobj.length">
+            <td>
+                <p>Aucun client trouv&eacute; pour votre selection</p>
+            </td>
         </tr>
       </tbody>
     </table>
