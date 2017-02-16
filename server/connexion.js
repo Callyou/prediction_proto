@@ -79,7 +79,7 @@ MongoClient.connect(url, function (err, db) {
       })
     })
   })
-  
+
 
 // *** Ajout de la propriété estimation dals la collection message :
 db.collection('message',function(err,collection){
@@ -120,7 +120,11 @@ db.collection('message',function(err,collection){
     for(var i=0;i < messages.length;i++)
     {
       var clientsid=messages[i].clientId;
-      if(messages[i].feedBack.realNb!=null && messages[i].estimation!=null)
+      if(messages[i].feedBack==null)
+      {
+          console.log('il faut ajouter les Nb Réel ou estimation');
+      }
+      else
       {
         if(messages[i].successRate=null)
         {
@@ -132,10 +136,7 @@ db.collection('message',function(err,collection){
         {
           console.log('Succes rate existe');
         }
-      }
-      else
-      {
-        console.log('il faut ajouter les Nb Réel ou estimation');
+
       }
     }
   })
