@@ -97,6 +97,7 @@ function functionFilterByDate($scope, $http){
                 objectclient2.push(objectclient[i]);
             }
           }
+           alert("objectclient2 length: " + objectclient2.length);
            $scope.clientsobj = objectclient2;
          })
       }
