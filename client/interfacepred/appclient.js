@@ -83,6 +83,12 @@ app.service('loggedClient', function( $http, $location, $route ) {
 app.controller('MessageViewDetailsCtrl', function($scope, $http, $routeParams, loggedClient) {
  $scope.message = loggedClient.getMessages().filter(function(lm){return lm._id == $routeParams._id;})[0];
  $scope.parseFloat = parseFloat;
+ // $scope.data = $scope.messages.filter(function(lm) { return lm.answer != null }).map(function(elem) {
+ //   return {
+ //     label: elem.answer.content.positive,
+ //     value: elem.feedBack.realNb,
+ //   }
+ // });
 });
 
 app.controller('MessageViewCtrl', function($scope, $http, $routeParams, loggedClient) {
@@ -155,9 +161,9 @@ app.controller('dashboardController', function($location, $scope, $routeParams, 
 
   $scope.data = $scope.messages.filter(function(lm) { return lm.feedBack != null }).map(function(elem) {
     return {
-      y: elem.creationDate,
-      b: elem.estimation,
-      a: elem.feedBack.realNb
+      y: elem.title,
+      a: elem.feedBack.realNb,
+      b: elem.estimation
     }
   });
   console.log($scope.data);

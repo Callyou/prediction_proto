@@ -5,7 +5,7 @@
 
 
   <br>
-   <h2> Nombre d'envoie </h2>
+   <h2> Nombre d'envoi </h2>
   <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
     <thead>
 		<tr>
@@ -26,11 +26,11 @@
         </tbody>
       </table>
 
-  <h2> Reponses utilisateurs </h2>
+  <h2> Réponses des utilisateurs </h2>
   <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
     <thead>
 		<tr>
-			<th ng-click="orderByMe('id')">Total reponses utilisateurs <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			<th ng-click="orderByMe('id')">Total réponses des utilisateurs <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
 			</th>
 			<th ng-click="orderByMe('creationDate')">Oui<i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
 			</th>
@@ -41,9 +41,22 @@
 	</thead>
     <tbody id="table">
       <tr>
-        <td>{{message.answer.stat.total}}</td>
+        <div ng-app="my.app" ng-controller="MyCtrl">
+  <!-- <div
+  donut-chart
+  donut-data='[
+      {label: "Download Sales", value: 12},
+      {label: "In-Store Sales",value: 30},
+      {label: "Mail-Order Sales", value: 20}
+  ]'
+  donut-colors='["#31C0BE","#c7254e","#98a0d3"]'
+  donut-label-color='"#000000"'
+  donut-background-color='"#ffffff"'
+  donut-formatter='"currency"'>
+  </div> -->
+        <!-- <td>{{message.answer.stat.total}}</td>
         <td > {{message.answer.stat.positive}} </td>
-        <td > {{message.answer.stat.negative}}</td>
+        <td > {{message.answer.stat.negative}}</td> -->
       </tr>
         </tbody>
       </table>
