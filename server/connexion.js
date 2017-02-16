@@ -79,7 +79,7 @@ MongoClient.connect(url, function (err, db) {
       })
     })
   })
-  
+
 
 // *** Ajout de la propriété estimation dals la collection message :
 db.collection('message',function(err,collection){
@@ -114,32 +114,32 @@ db.collection('message',function(err,collection){
 
 //// Calcul du succes rate
 
-db.collection('message',function(err,collection){
-  collection.find().toArray( function(err,messages) {
-
-    for(var i=0;i < messages.length;i++)
-    {
-      var clientsid=messages[i].clientId;
-      if(messages[i].feedBack.realNb!=null && messages[i].estimation!=null)
-      {
-        if(messages[i].successRate=null)
-        {
-
-          collection.update({_id:messages[i]._id},
-                            {$set:{successRate:TauxErreur(messages[i].feedBack.realNb,messages[i].estimation) }});
-        }
-        else
-        {
-          console.log('Succes rate existe');
-        }
-      }
-      else
-      {
-        console.log('il faut ajouter les Nb Réel ou estimation');
-      }
-    }
-  })
-})
+// db.collection('message',function(err,collection){
+//   collection.find().toArray( function(err,messages) {
+//
+//     for(var i=0;i < messages.length;i++)
+//     {
+//       var clientsid=messages[i].clientId;
+//       if(messages[i].feedBack.realNb!=null && messages[i].estimation!=null)
+//       {
+//         if(messages[i].successRate=null)
+//         {
+//
+//           collection.update({_id:messages[i]._id},
+//                             {$set:{successRate:TauxErreur(messages[i].feedBack.realNb,messages[i].estimation) }});
+//         }
+//         else
+//         {
+//           console.log('Succes rate existe');
+//         }
+//       }
+//       else
+//       {
+//         console.log('il faut ajouter les Nb Réel ou estimation');
+//       }
+//     }
+//   })
+// })
   //****Accès à la base message ***
   db.collection('message',function(err,collection) {
     // récuperation de  tous les messages : localhost:port/message

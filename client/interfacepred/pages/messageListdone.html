@@ -9,15 +9,15 @@
       <tr>
         <th ng-click="orderByMe('id')">id <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
         </th>
-        <th ng-click="orderByMe('creationDate')">Date de création <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+        <th ng-click="orderByMe('creationDate')">Date de création <i  aria-hidden="true" align="right"></i>
         </th>
-        <th ng-click="orderByMe('dueDate')">Date d'échéance <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+        <th ng-click="orderByMe('dueDate')">Date d'échéance <i aria-hidden="true" align="right"></i>
         </th>
-        <th ng-click="orderByMe('title')">Titre <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+        <th ng-click="orderByMe('title')">Titre <i  aria-hidden="true" align="right"></i>
         </th>
-        <th ng-click="orderByMe('content')">Commentaires <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+        <th ng-click="orderByMe('content')">Commentaires <i  aria-hidden="true" align="right"></i>
         </th>
-        <th ng-click="orderByMe('realNb')">Nombre d'entrée réel <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+        <th ng-click="orderByMe('realNb')">Nombre d'entrée réel <i  aria-hidden="true" align="right"></i>
       </tr>
     </thead>
     <tbody id="table" ng-repeat="message in messages | filter:search | orderBy:myOrderBy| limitTo:quantity ">
