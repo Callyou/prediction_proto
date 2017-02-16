@@ -1,12 +1,11 @@
 <div class="panel-body">
-  <p> {{message.titre}} </p>
-  <p> {{message.textQuestion}}</p>
-  <p> <h4>creationDate :</h4> {{message.creationDate}}</p>
-  <p> <h4>creationDate :</h4> {{message.deliveryDate}}</p>
-  
-  
+  <p> <label> Titre : </label> {{message.title}} </p>
+  <p> <label> Date de creation : </label> {{message.creationDate}}</p>
+  <p> <label> Date d'echeance :</label> {{message.deliveryDate}}</p>
+
+
   <br>
-   <h2> Nombre d'envoie </h2>
+   <h2> Nombre d'envoi </h2>
   <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
     <thead>
 		<tr>
@@ -15,7 +14,7 @@
 			<th ng-click="orderByMe('mobilePull')">Mobile<i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
 			</th>
 			<th ng-click="orderByMe('websitePull')">Web<i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
-			</th>	
+			</th>
 		</tr>
 	</thead>
     <tbody id="table">
@@ -26,27 +25,59 @@
       </tr>
         </tbody>
       </table>
-	  
-  <h2> Reponses utilisateurs </h2>
+
+  <h2> Réponses des utilisateurs </h2>
   <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
     <thead>
 		<tr>
-			<th ng-click="orderByMe('id')">Total reponses utilisateurs <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			<th ng-click="orderByMe('id')">Total réponses des utilisateurs <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
 			</th>
 			<th ng-click="orderByMe('creationDate')">Oui<i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
 			</th>
 			<th ng-click="orderByMe('deliveryDate')">Non<i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
-			</th>	
+			</th>
+
 		</tr>
 	</thead>
     <tbody id="table">
       <tr>
+        <!-- <td>
+          <div
+          bar-chart
+          bar-data="data"
+          bar-x='y'
+          bar-y='["a", "b"]'
+          bar-labels='["Nombre réel", "Estimation"]'
+          bar-colors='["#31C0BE", "#c7254e"]'>
+        </div>
+        <div
+      donut-chart
+      donut-data="data"
+      donut-label-color='"#000000"'
+      donut-background-color='"#ffffff"'
+      donut-colors='["#31C0BE","#c7254e"]'
+      >
+      </div>
+    </td> -->
         <td>{{message.answer.stat.total}}</td>
         <td > {{message.answer.stat.positive}} </td>
         <td > {{message.answer.stat.negative}}</td>
       </tr>
         </tbody>
       </table>
-	  
-  <p> <strong> <h3> Resultat pr�diction : </h3> </strong></p>
+
+  <p> <strong> <h3> Resultat prédiction : </h3> </strong></p>
+  <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example2">
+    <thead>
+
+	</thead>
+    <tbody id="table">
+      <tr>
+
+        <td > {{message.estimation}} </td>
+
+      </tr>
+        </tbody>
+      </table>
+
 </div>

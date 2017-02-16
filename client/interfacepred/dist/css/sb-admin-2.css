@@ -440,6 +440,7 @@ table.dataTable thead .sorting:after {
   }
 }
 div.forDisplay { float:left; }
+<<<<<<< HEAD
 
 /* The Modal (background) */
 .modal {
@@ -477,3 +478,5 @@ div.forDisplay { float:left; }
   text-decoration: none;
   cursor: pointer;
 }
+=======
+>>>>>>> 2a37277d61b50a72b76431fa3497575c4dfa0fc2
