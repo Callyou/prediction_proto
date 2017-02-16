@@ -96,6 +96,7 @@ db.collection('message',function(err,collection){
           collection.update({_id:messages[i]._id},
                             {$set:{estimation:
                                   calculEstimation(messages[i].nbPull.websitePull,messages[i].nbPull.mobilePull,messages[i].answer.stat.positive,messages[i].answer.stat.positive)}});
+          collection.update({_id:messages[i]._id},{$set:{deliveryDate: new Date()}});
         }
         else
         {
