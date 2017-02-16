@@ -22,8 +22,8 @@
   <!-- Custom CSS -->
   <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
-<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
   <script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
   <!-- Morris Charts CSS -->
   <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
@@ -34,25 +34,32 @@
   <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-      </head>
+</head>
 
-      <body>
+<body>
 
 
-        <div id="wrapper"  ng-controller="clientController">
-         <div ng-controller="selectTypeClient">
+  <div id="wrapper"  ng-controller="clientController">
+    <div ng-controller="selectTypeClient">
 
-          <!-- Navigation -->
-          <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <img src="..\img\logokapupa.png" style="height:70px;" >
+      <!-- Navigation -->
+      <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <img src="..\img\logokapupa.png" style="height:70px;" >
 
+<<<<<<< HEAD
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+
+=======
             </div>
             <!-- /.navbar-header -->
 
@@ -89,18 +96,50 @@
                     <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" >
                       <option>Restaurant</option>
                       <option >Commerçant</option>
+>>>>>>> 2a37277d61b50a72b76431fa3497575c4dfa0fc2
 
-                    </select>
-                  </div>
-                </li>
-                <li class="sidebar-search">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li><a href="#"><i class="fa fa-user fa-fw"></i> Mon profil</a>
+              </li>
+              <li><a href="#"><i class="fa fa-gear fa-fw"></i> Paramètres</a>
+              </li>
+              <li class="divider"></li>
+              <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Déconnexion</a>
+              </li>
+            </ul>
+            <!-- /.dropdown-user -->
+          </li>
+          <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
 
-                  <div class="form-group" ng-controller="FilterController">
+        <div class="navbar-default sidebar" style="margin-top:100px;" role="navigation">
+          <div class="sidebar-nav navbar-collapse">
+            <ul class="nav" id="side-menu">
 
-                   <label class="control-label" for="date">Date de prédiction</label>
-                   <div class="input-group date">
-                     <input class="form-control" id="deliverydate" name="date" placeholder="MM/DD/YYY" type="text">
-                     <span class="input-group-addon">
+
+              <li class="sidebar-search">
+                <div class="form-group">
+                  <label>Type du client</label>
+                  <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="data.multipleSelect" >
+                    <option>Restaurant</option>
+                    <option >Commerçant</option>
+
+                  </select>
+                </div>
+              </li>
+              <li class="sidebar-search">
+
+                <div class="form-group" ng-controller="FilterController">
+
+                  <label class="control-label" for="date">Date de prédiction</label>
+                  <div class="input-group date">
+                    <input class="form-control" id="deliverydate" name="date" placeholder="MM/DD/YYY" type="text">
+                    <span class="input-group-addon">
                       <span class="glyphicon glyphicon-calendar"></span>
 
                     </span>
@@ -115,22 +154,22 @@
                 <div class="form-group" ng-controller="FicheClientController">
 
 
-           <div class="form-group" ng-controller="SelectQuestionController">
+                  <div class="form-group" ng-controller="SelectQuestionController">
 
 
                     <label>Question</label>
 
                     <select class="form-control" id="questions">
-                     <option></option>
+                      <option></option>
 
 
                     </select>
 
+                  </div>
                 </div>
-                   </div>
 
                 <!-- C EST ICI QU'IL FAUT afficher les questions selon l'id-->
-            <input id="champcaché"></input>
+                <input id="champcaché"></input>
               </li>
 
 
@@ -140,8 +179,21 @@
         </div>
         <!-- /.navbar-static-side -->
       </nav>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Aucun client trouv&eacute; pour votre selection</p>
+        </div>
+      </div>
 
       <div id="page-wrapper" class="page1">
+<<<<<<< HEAD
+        <div class="row forDisplay" id="titre">
+          <div class="col-lg-12">
+            <h3 class="page-header">Liste des clients</h3>
+=======
           <div class="row forDisplay" id="titre">
             <div class="col-lg-12">
               <h3 class="page-header">Liste des clients</h3>
@@ -158,35 +210,144 @@
                   </div>
                 </div>
             </form>
+>>>>>>> 2a37277d61b50a72b76431fa3497575c4dfa0fc2
           </div>
+
+        <div class="col-sm-6 col-md-6 forDisplay" id="researchDiv">
+          <form class="navbar-form" role="search">
+            <div class="input-group" style="padding-left:50px;width:550px;">
+              <input type="text" id ="textToSearch" class="form-control" placeholder="Search" name="q" ng-model="globalSearch.$" >
+              <div class="input-group-btn">
+                <button id ="btnSearch" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
 
         <!-- /.row -->
         <div class="row">
           <div class="col-lg-12">
 
-           <div  style="padding-top:20px;">
-             <div class="panel panel-warning" id="information">
-              <div class="panel-heading">
-                Information
-              </div>
-              <div class="panel-body">
-                <p>Aucun filtre n'a été efféctué de votre part, choisissez les filtres ce trouvant à gauche de la page </p>
-              </div>
+            <!-- <div  style="padding-top:20px;">
+              <div class="panel panel-warning" id="information">
+                <div class="panel-heading">
+                  Information
+                </div>
+                <div class="panel-body">
+                  <p>Aucun filtre n'a été efféctué de votre part, choisissez les filtres ce trouvant à gauche de la page </p>
+                </div>
 
+              </div>
+            </div> -->
+
+            <div ui-sref="home" ui-view="liste">
+
+<<<<<<< HEAD
             </div>
+
+            <!-- /.panel -->
           </div>
-
-          <div ui-sref="home" ui-view="liste">
-
-		      </div>
-
-          <!-- /.panel -->
+          <!-- /.col-lg-12 -->
         </div>
-        <!-- /.col-lg-12 -->
-      </div>
-      <!-- /.row -->
+        <!-- /.row -->
 
+      </div>
+      <!-- /#page-wrapper -->
+
+
+
+      <!-- /#wrapper -->
+=======
+		      </div>
+>>>>>>> 2a37277d61b50a72b76431fa3497575c4dfa0fc2
+
+      <!-- jQuery -->
+      <div id="page-wrapper" class="page2">
+        <div ui-view="fiche"> </div>
+      </div>
     </div>
+<<<<<<< HEAD
+  </div>
+
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+
+  <!-- Bootstrap Core JavaScript -->
+  <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- Metis Menu Plugin JavaScript -->
+  <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+  <!-- Morris Charts JavaScript -->
+  <script src="../vendor/raphael/raphael.min.js"></script>
+  <script src="../vendor/morrisjs/morris.min.js"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script src="../dist/js/sb-admin-2.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>
+  <script src="../appkapupa.js"></script>
+  <script src="../js/KapupaController/ClientKapupaController.js"></script>
+  <script src="../js/KapupaController/FicheClientController.js"></script>
+  <script src="../js/KapupaController/MessageKapupaController.js"></script>
+  <script src="../js/KapupaController/FiltreQuestionController.js"></script>
+  <script src="../js/KapupaController/FiltreTypeDateController.js"></script>
+  <!-- <script src="../js/KapupaController/rechercherGlobal.js"></script> -->
+  <script>
+  /*
+  function test(client){
+  console.log(client);
+  $('.page1').hide();
+  $('.page2').show();
+
+
+}*/
+$(document).ready(function(){
+  var date_input=$('input[name="date"]'); //our date input has the name "date"
+  var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+  var options={
+    format: 'mm/dd/yyyy',
+    container: container,
+    todayHighlight: true,
+    autoclose: true,
+  };
+  date_input.datepicker(options);
+
+  $('#titre').hide();
+  $('#researchDiv').hide();
+  $('#question').hide();
+  $('.page2').hide();
+  $("#champcaché").hide();
+  ViderLaListeDesQuestions();
+
+
+  $('#multipleSelect').on('change', function(){
+    showClientList();
+  });
+
+  $('#deliverydate').on('change', function(){
+    showClientList();
+  });
+
+});
+
+function showClientList(){
+
+  ViderLaListeDesQuestions();
+
+  $('#questions').val('');
+  $('#information').hide();
+  $('#titre').show();
+  $('#researchDiv').show();
+  $("#question").hide();
+  $('.page1').show();
+  $('.page2').hide();
+}
+</script>
+=======
     <!-- /#page-wrapper -->
 
 
@@ -280,6 +441,7 @@ function test(client){
       $('.page2').hide();
     }
   </script>
+>>>>>>> 2a37277d61b50a72b76431fa3497575c4dfa0fc2
 
 </body>
 
