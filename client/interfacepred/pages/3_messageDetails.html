@@ -1,7 +1,7 @@
 <div class="panel-body">
   <p> <label> Titre : </label> {{message.title}} </p>
-  <p> <label> Date de creation : </label> {{message.creationDate}}</p>
-  <p> <label> Date d'echeance :</label> {{message.deliveryDate}}</p>
+  <p> <label> Date de creation : </label> {{message.creationDate | date:'dd/MM/yyyy'}}</p>
+  <p> <label> Date d'echeance :</label> {{message.dueDate | date:'dd/MM/yyyy'}}</p>
 
 
   <br>
@@ -74,7 +74,7 @@
     <tbody id="table">
       <tr>
 
-        <td > {{message.estimation}} </td>
+        <td > <span>{{message.estimation}} couverts</span> </td>
 
       </tr>
         </tbody>
