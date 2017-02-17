@@ -51,7 +51,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-           <img src="..\img\logokapupa.png" style="height:70px;" >
+          <a href="#" rel="stylesheet" type="text/css"> <img src="..\img\logokapupa.png" style="height:70px;" ></a>
 
 	   </div>
         <!-- /.navbar-header -->
@@ -73,7 +73,7 @@
           </li>
           <li>
             <a href="#" rel="stylesheet" type="text/css">
-              <i class="fa fa-home fa-fw"></i>
+              <i class="fa fa-home fa-2x"></i>
             </a>
           </li>
 
@@ -86,8 +86,8 @@
             <ul class="nav" id="side-menu">
 
               <li class="sidebar-search" ng-controller="navbarController">
-                <label>! Pour la démonstration seulement, sélectionnez le clientId désiré !</label>
-                Current client : {{ loggedClient.clientId }}
+                <label>! Version démonstration, sélectionnez le clientId désiré !</label>
+                Client selectionné : {{ loggedClient.clientId }}
                 <div class="input-group custom-search-form">
                   <select ng-change="updateCli($event);" class="form-control" name="multipleSelect" id="multipleSelect" ng-model="clientId">
                     <option value={{client.clientId}} ng-repeat="client in clients">{{client.clientId}}</option>
@@ -155,7 +155,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-morris/1.3.0/angular-morris.min.js"></script>
 
         <script src="../appclient.js"></script>
-        <script src="../js/ClientController/Dashboard.js"></script>
+        <script src="../js/ClientController/DashBoard.js"></script>
         <!-- <script src="../js/KapupaController/FicheClientController.js"></script>
         <script src="../js/KapupaController/MessageKapupaController.js"></script>
         <script src="../js/KapupaController/FiltreQuestionController.js"></script>

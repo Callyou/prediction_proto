@@ -14,7 +14,12 @@ console.log("coucouc je suis dans dashboard", $scope.messages)
     return lm.feedBack == null
   });
 
-  $scope.data = $scope.messages.filter(function(lm) { return lm.feedBack != null }).slice(Math.max($scope.messages.length - 5, 1)).map(function(elem) {
+  $scope.data = $scope.messages.filter(function(lm) { return lm.feedBack != null })
+  .sort(function(a, b) {
+    a = new Date(a.dueDate);
+    b = new Date(b.dueDate);
+    return a-b;
+}).slice(-5).map(function(elem) {
     return {
       y: elem.title,
       a: elem.feedBack.realNb,

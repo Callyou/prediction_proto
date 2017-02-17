@@ -4,8 +4,9 @@
   </div>
   <!-- /.col-lg-12 -->
   <!-- /.row -->
-  <div><label><h3><strong>total messages:</h3></strong></label> {{messages.length}} - <a ng-href="#/messagelist?messages={{messages}}"> voir les messages </a> </div>
+  <div><label><h3><strong>Total messages: {{messages.length}} </h3></strong></label> - <a ng-href="#/messagelistdone?messages={{messages}}"> voir les messages </a> </div>
   <div class="row">
+    <a ng-href="#/messagelist?messageType=messagewithoutdelivery">
     <div class="col-lg-4 col-md-8">
       <div class="panel panel-primary">
         <div class="panel-heading">
@@ -23,21 +24,23 @@
           </div>
         </div>
 
-        <a ng-href="#/messagelist?messageType=messagewithoutdelivery">
+
           <div class="panel-footer">
-            <span class="pull-left">Voir Détails</span>
+            <span class="pull-left">Voir détails</span>
             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
             <div class="clearfix"></div>
           </div>
-        </a>
+
       </div>
     </div>
+	 </a>
+	<a ng-href="#/messagelistdone?messageType=messagewithdelivery">
     <div class="col-lg-4 col-md-6">
       <div class="panel panel-green">
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-3">
-             <i class="fa fa-check-square-o fa-4x" aria-hidden="true"></i> 
+             <i class="fa fa-check-square-o fa-4x" aria-hidden="true"></i>
             </div>
             <div class="col-xs-9 text-right">
               <div class="huge" >{{messagewithdelivery.length}}</div>
@@ -46,19 +49,25 @@
           </div>
         </div>
 
-        <a ng-href="#/messagelist?messageType=messagewithdelivery">
+
           <div class="panel-footer">
-            <span class="pull-left">Voir Détails</span>
+            <span class="pull-left">Voir détails</span>
             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
             <div class="clearfix"></div>
           </div>
-        </a>
+
       </div>
     </div>
+	</a>
+<a ng-href="#/messagelistdonefeedback?messageType=messagewithcontent">
     <div class="col-lg-4 col-md-6">
+
       <div class="panel panel-yellow">
-        <div class="panel-heading">
-          <div class="row">
+
+		<div class="panel-heading">
+
+		  <div class="row">
+
             <div class="col-xs-3">
              <i class="fa fa-pencil-square-o fa-4x" aria-hidden="true"></i>
             </div>
@@ -69,18 +78,18 @@
           </div>
         </div>
 
-        <a ng-href="#/messagelistdone?messageType=messagewithcontent">
           <div class="panel-footer">
-            <span class="pull-left">Voir Détails</span>
+            <span class="pull-left">Voir détails</span>
             <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
             <div class="clearfix"></div>
           </div>
-        </a>
+
       </div>
+
     </div>
 
   </div>
-
+</a>
 
   <!-- /.row -->
   <div class="row">

@@ -33,8 +33,37 @@ app.config(['$routeProvider',
           $scope.myOrderBy = x;
         }
       }
-    }).when('/messagelistdone', {
-      templateUrl: '/public/interfacepred/pages/2_messageListdone.html',
+    })
+    .when('/messagelistdone', {
+      templateUrl: '/public/interfacepred/pages/2_messageListDone.html',
+      controller: function($scope, $http, $routeParams, loggedClient) {
+        var messages = loggedClient.getMessages();
+        switch ($routeParams.messageType) {
+          case 'messagewithoutdelivery':
+              $scope.messages = messages.filter(function(lm){
+                return (lm.answer != null && lm.answer.stat == null) | lm.answer == null;
+              });
+            break;
+          case 'messagewithdelivery':
+              $scope.messages = messages.filter(function(lm){
+                return lm.answer != null && lm.answer.stat;
+              });
+            break;
+          case 'messagewithcontent':
+              $scope.messages = messages.filter(function(lm) {
+                return lm.feedBack == null
+              });
+            break;
+          default:
+            $scope.messages = messages;
+        }
+        $scope.quantity = 10;
+        $scope.orderByMe = function(x) {
+          $scope.myOrderBy = x;
+        }
+      }
+    }).when('/messagelistdonefeedback', {
+      templateUrl: '/public/interfacepred/pages/2_messageListDoneFeedback.html',
       controller : 'MessageViewCtrl'
     }).otherwise({
       templateUrl: '/public/interfacepred/pages/1_dashboard.html',
@@ -83,18 +112,6 @@ app.service('loggedClient', function( $http, $location, $route ) {
 app.controller('MessageViewDetailsCtrl', function($scope, $http, $routeParams, loggedClient) {
  $scope.message = loggedClient.getMessages().filter(function(lm){return lm._id == $routeParams._id;})[0];
  $scope.parseFloat = parseFloat;
-// $scope.messages = loggedClient.getMessages();
-// $scope.parJson = function (json) {
-//    return angular.fromJson(json);
-// }
-//  $scope.data = $scope.messages.filter(function(lm) { return lm.answer != null & lm._id == $routeParams._id;}).map(function(elem) {
-//    return {
-//
-//      y: elem.content[0].positive,
-//      a: elem.answer.stat.positive,
-//      b: elem.answer.stat.negative
-//    }
-//  });
 });
 
 app.controller('MessageViewCtrl', function($scope, $http, $routeParams, loggedClient) {
@@ -148,33 +165,6 @@ app.controller('MessageViewCtrl', function($scope, $http, $routeParams, loggedCl
     })
   }
 });
-
-// app.controller('dashboardController', function($location, $scope, $routeParams, loggedClient) {
-//   $scope.currentClient = loggedClient.getClient();
-//   $scope.messages = loggedClient.getMessages();
-//
-//   $scope.messagewithoutdelivery = $scope.messages.filter(function(lm){
-//     return lm.answer == null;
-//   });
-//
-//   $scope.messagewithdelivery = $scope.messages.filter(function(lm){
-//     return lm.answer !== null;
-//   });
-//
-//   $scope.messagewithcontent = $scope.messages.filter(function(lm) {
-//     return lm.feedBack == null
-//   });
-//
-//   $scope.data = $scope.messages.filter(function(lm) { return lm.feedBack != null }).map(function(elem) {
-//     return {
-//       y: elem.title,
-//       a: elem.feedBack.realNb,
-//       b: elem.estimation
-//     }
-//   });
-//   console.log($scope.data);
-//
-// });
 
 app.controller('navbarController', function($scope, $location, $http, loggedClient) {
   $scope.clientId = null;

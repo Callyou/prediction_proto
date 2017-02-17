@@ -84,3 +84,53 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
 - messagessentdetails.html
 - messagesdone.html
 - messagesdonedetails.html
+
+# Back end : le dossier “Server “
+
+Le dossier Server contient tout le back-end  de l’application. Il inclut deux fichiers :
+ - Connexion.js 
+ - calculEstimation.js
+
+## le fichier : Connexion.js
+
+L’application est lancé par ce fichier. Il contient la connexion avec la base de données par le chargement du module mongo comme suit :
+
+```sh
+var mongodb= require('mongodb'); // chargement du module mongo par node
+var url = 'mongodb://localhost:27017/miageTest'; // le chemin vers la base de données Mongo
+MongoClient.connect(url, function (err, db) {
+  // Récupère les collections (client et message) par un get 
+  // Insère dans les collections (client et message) par un get  
+                                          }
+```
+Pour récupérer les données d’une collection  on utilise la fonction “get” du module express:
+```sh
+db.collection('client',function(err,collection){
+// récuperation de  tous les clients : localhost:port/client
+   app.get('/client',function(req,res){
+     collection.find().toArray(function(err,client){
+      if(!err) res.send(client)
+        console.log(res)
+        })
+   })
+})
+```
+Pour insérer et mettre à jour les données d’une collection  on utilise la fonction “post” du module express:
+```sh
+db.collection('client',function(err,
+  app.post('/client',function(req,res){
+    collection.insert(req.body,function(err,client){
+      if(!err) res.send(client)
+        })
+   })
+})
+```
+## le fichier : calculEstimation.js
+
+Ce fichier contient deux fonctions : 
+La fonction de prédiction : calculEstimation  qui pour etre changer par le doctorant
+> - La fonction est appelé dans le fichier connexion.js pour l’insertion de la propriété “estimation” .
+    La fonction de calcul de taux de d’erreur calculées à partir du nombre réel retourner pour le client et l’estimation (la prédiction)
+> - La fonction est appelé dans le fichier connexion.js pour l’insertion de la propriété “succesRate” 
+
+
