@@ -115,6 +115,34 @@ db.collection('message',function(err,collection){
 
 //// Calcul du succes rate
 
+<<<<<<< HEAD
+// db.collection('message',function(err,collection){
+//   collection.find().toArray( function(err,messages) {
+//
+//     for(var i=0;i < messages.length;i++)
+//     {
+//       var clientsid=messages[i].clientId;
+//       if(messages[i].feedBack.realNb!=null && messages[i].estimation!=null)
+//       {
+//         if(messages[i].successRate=null)
+//         {
+//
+//           collection.update({_id:messages[i]._id},
+//                             {$set:{successRate:TauxErreur(messages[i].feedBack.realNb,messages[i].estimation) }});
+//         }
+//         else
+//         {
+//           console.log('Succes rate existe');
+//         }
+//       }
+//       else
+//       {
+//         console.log('il faut ajouter les Nb Réel ou estimation');
+//       }
+//     }
+//   })
+// })
+=======
 db.collection('message',function(err,collection){
   collection.find().toArray( function(err,messages) {
 
@@ -142,6 +170,7 @@ db.collection('message',function(err,collection){
     }
   })
 })
+>>>>>>> 7443fb9062fb19e1abda94cbb1c51fcd65238af2
   //****Accès à la base message ***
   db.collection('message',function(err,collection) {
     // récuperation de  tous les messages : localhost:port/message
