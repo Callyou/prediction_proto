@@ -12,7 +12,7 @@ app.config(['$routeProvider',
         switch ($routeParams.messageType) {
           case 'messagewithoutdelivery':
               $scope.messages = messages.filter(function(lm){
-                return lm.answer == null;
+                return lm.answer !== null && lm.answer.stat ;
               });
             break;
           case 'messagewithdelivery':
