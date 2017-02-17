@@ -3,9 +3,11 @@ app.controller('SelectQuestionController',function($scope,$http){
   var ques;
   var clientid;
 
-
+  
   $("#questions").change(function(){
 
+
+ 
     clientid= $("#champcaché").val();
     ques= $("#questions").val();
     $http.get("/message").success(function(response){
@@ -19,9 +21,19 @@ app.controller('SelectQuestionController',function($scope,$http){
           $("#tauxerreur").text(value.hasOwnProperty('successRate') ? value.successRate : "non renseigné");
           $("#retourclient").text(value.hasOwnProperty('feedBack') ? value.feedBack.realNb : "non renseigné");
 
-          if(value.hasOwnProperty('answer')== true)
+          if(value.hasOwnProperty('answer')== false)
           {
-            google.charts.load('current', {'packages':['bar','corechart']});
+             $(".nonrenseigne").show();
+             $("#top_x_div").hide();
+             $("#donutchart").hide();
+    
+            
+    }else {
+       $(".nonrenseigne").hide();
+        $("#top_x_div").show();
+             $("#donutchart").show();
+
+     google.charts.load('current', {'packages':['bar','corechart']});
             google.charts.setOnLoadCallback(drawStuff);
 
             function drawStuff() {
@@ -70,10 +82,6 @@ app.controller('SelectQuestionController',function($scope,$http){
         chart.draw(data, options);
       }
 
-    }else {
-
-      $("#graphe1").text("non renseigné");
-      $("#graphe2").text("non renseigné");
     }
   }
 });
