@@ -7,7 +7,7 @@
 	<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example1">
 		<thead>
 			<tr>
-			<th ng-click="orderByMe('id')">id <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+			<th ng-click="orderByMe('messageId')">id <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
 			</th>
 			<th ng-click="orderByMe('creationDate')">Date de création <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
 			</th>
@@ -21,7 +21,7 @@
 	</thead>
 	<tbody id="table" ng-repeat="message in messages | filter:search | orderBy:myOrderBy| limitTo:quantity ">
 			<tr>
-				<td><a ng-href="#/message/{{message._id}}">{{message._id}}</a></td>
+				<td><a ng-href="#/message/{{message._id}}">{{message.messageId}}</a></td>
 				<td>{{message.creationDate | date:'dd/MM/yyyy'}}</td>
 				<td>{{message.dueDate | date:'dd/MM/yyyy'}}</td>
 				<td>{{message.deliveryDate | date:'dd/MM/yyyy'}}</td>
