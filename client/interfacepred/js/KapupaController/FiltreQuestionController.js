@@ -4,8 +4,7 @@ app.controller('SelectQuestionController',function($scope,$http){
   var clientid;
 
   $("#questions").change(function(){
-    $("#donut-example").empty();
-    $("#donut-example1").empty();
+
 
     clientid= $("#champcaché").val();
     ques= $("#questions").val();
@@ -15,33 +14,28 @@ app.controller('SelectQuestionController',function($scope,$http){
 
       $.each( response, function( key, value ) {
         if( value.clientId==clientid && value.title==ques){
-       
-         /* Morris.Bar({
-            element: 'donut-example',
-            data: [
-            
-            { y: 'total messages envoyés', a: parseInt(value.nbPull.mobilePull)+parseInt(value.nbPull.websitePull)},
-            { y: 'total réponses', a:  parseInt(value.answer.stat.total)}
-            ],
-            xkey: 'y',
-            ykeys: ['a'],
-            labels:['',''] 
-          });*/
-           google.charts.load('current', {'packages':['bar','corechart']});
-      google.charts.setOnLoadCallback(drawStuff);
+            $("#retourclient").text(value.feedBack.hasOwnProperty('realNb') ? value.feedBack.realNb : "non renseigné");
+             $("#estimation").text(value.hasOwnProperty('estimation') ? value.estimation : "non renseigné");
+             alert('title : ' + value.title);
+             console.log(value.feedBack);
+             
+             $("#tauxerreur").text(value.hasOwnProperty('successRate') ? value.successRate : "non renseigné");
+     
+            google.charts.load('current', {'packages':['bar','corechart']});
+            google.charts.setOnLoadCallback(drawStuff);
 
-      function drawStuff() {
-        var data = new google.visualization.arrayToDataTable([
-          ['', ''],
-          ["envoyés", parseInt(value.nbPull.mobilePull)+parseInt(value.nbPull.websitePull)],
-          ["répondus",  parseInt(value.answer.stat.total)]
-        
-        ]);
+            function drawStuff() {
+              var data = new google.visualization.arrayToDataTable([
+                ['', ''],
+                ["envoyés", parseInt(value.nbPull.mobilePull)+parseInt(value.nbPull.websitePull)],
+                ["répondus",  parseInt(value.answer.stat.total)]
 
-        var options = {
-         colors: ['#800040'],
-          width:400,
-          legend: { position: 'none' },
+                ]);
+
+              var options = {
+               colors: ['#800040'],
+               width:400,
+               legend: { position: 'none' },
           bars: 'vertical', // Required for Material Bar Charts.
           axes: {
             x: {
@@ -63,9 +57,9 @@ app.controller('SelectQuestionController',function($scope,$http){
           ['type de réponses', 'nombre de réponses'],
           ['Oui',      parseInt(value.answer.stat.positive)],
           ['Non',     parseInt( value.answer.stat.negative)]
-         
-        
-        ]);
+
+
+          ]);
 
         var options = {
           colors: ['#FFA500', '#800040'],
@@ -75,24 +69,9 @@ app.controller('SelectQuestionController',function($scope,$http){
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
       }
-
-
-/*
-          Morris.Donut({
-            element: 'donut-example1',
-            data: [
-            {label: "réponses oui ",value: value.answer.stat.positive},
-            {label: "réponses non", value: value.answer.stat.negative}
-
-            ]
-          });*/
-          $("#estimation").text(value.estimation);
-          $("#retourclient").text(value.feedBack.realNb);
-          $("#tauxerreur").text(value.successRate);
-
-        }
-      });
-    })
-    $('#divquestion').show();
-  })
+}
+});
+})
+$('#divquestion').show();
+})
 });
