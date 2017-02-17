@@ -73,7 +73,7 @@
           </li>
           <li>
             <a href="#" rel="stylesheet" type="text/css">
-              <i class="fa fa-home fa-fw"></i>
+              <i class="fa fa-home fa-2x"></i>
             </a>
           </li>
 
@@ -86,8 +86,8 @@
             <ul class="nav" id="side-menu">
 
               <li class="sidebar-search" ng-controller="navbarController">
-                <label>! Pour la démonstration seulement, sélectionnez le clientId désiré !</label>
-                Current client : {{ loggedClient.clientId }}
+                <label>! Version démonstration, sélectionnez le clientId désiré !</label>
+                Client selectionné : {{ loggedClient.clientId }}
                 <div class="input-group custom-search-form">
                   <select ng-change="updateCli($event);" class="form-control" name="multipleSelect" id="multipleSelect" ng-model="clientId">
                     <option value={{client.clientId}} ng-repeat="client in clients">{{client.clientId}}</option>
