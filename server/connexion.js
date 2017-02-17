@@ -122,22 +122,24 @@ db.collection('message',function(err,collection){
     for(var i=0;i < messages.length;i++)
     {
       var clientsid=messages[i].clientId;
-      if(messages[i].feedBack==null)
+      if(messages[i].feedBack!=null)
       {
-          console.log('il faut ajouter les Nb Réel ou estimation');
-      }
-      else
-      {
-        if(messages[i].successRate=null)
+        if(messages[i].successRate==null)
         {
 
           collection.update({_id:messages[i]._id},
-                            {$set:{successRate:TauxErreur(messages[i].feedBack.realNb,messages[i].estimation) }});
+                            {$set:{successRate:sucessRate(messages[i].feedBack.realNb,messages[i].estimation) }});
+         
         }
         else
         {
           console.log('Succes rate existe');
         }
+         
+      }
+      else
+      {
+         console.log('il faut ajouter les Nb Réel ou estimation');
 
       }
     }
