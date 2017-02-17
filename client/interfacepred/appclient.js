@@ -3,10 +3,10 @@ var app = angular.module('myApp', ['ngRoute','angular.morris']);
 app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.when('/message/:_id', {
-      templateUrl: '/public/interfacepred/pages/messagedetails.html',
+      templateUrl: '/public/interfacepred/pages/3_messageDetails.html',
       controller : 'MessageViewDetailsCtrl'
     }).when('/messagelist', {
-      templateUrl: '/public/interfacepred/pages/messageList.html',
+      templateUrl: '/public/interfacepred/pages/2_messageList.html',
       controller: function($scope, $http, $routeParams, loggedClient) {
         var messages = loggedClient.getMessages();
         switch ($routeParams.messageType) {
@@ -34,10 +34,10 @@ app.config(['$routeProvider',
         }
       }
     }).when('/messagelistdone', {
-      templateUrl: '/public/interfacepred/pages/messageListdone.html',
+      templateUrl: '/public/interfacepred/pages/2_messageListdone.html',
       controller : 'MessageViewCtrl'
     }).otherwise({
-      templateUrl: '/public/interfacepred/pages/1dashboard.html',
+      templateUrl: '/public/interfacepred/pages/1_dashboard.html',
       controller: 'dashboardController'
     });
   }
