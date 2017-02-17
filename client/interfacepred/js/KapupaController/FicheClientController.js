@@ -6,12 +6,6 @@ app.controller('FicheClientController',function($scope,$http){
   $http.get("/client").success(function(response){
     $scope.getclients = function(client){
       ViderLaListeDesQuestions();
-      var select = document.getElementById("questions");
-      var length = select.options.length;
-      for (i = 0; i < length; i++)
-      {
-        select.options[i] = null;
-      }
       var jsonclient=JSON.stringify(client);
 
       console.log(jsonclient);
@@ -51,8 +45,25 @@ app.controller('FicheClientController',function($scope,$http){
               tauxerreur.push(Number(value.successRate));
             }
 
-            $('#questions').append(new Option(value.title));
+            var dateString =  $("#deliverydate").val();
+            if(dateString != ''){
 
+              //Enlever le décalage horaire
+              var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+              var date = (new Date(new Date(dateString) - tzoffset)).toISOString().slice(0,-1);
+
+              // date selectionée en année, mois et jour
+              var dateJustYearDayAndMonth = date.substring(0,10);
+
+              // date de prediction (deliveryDate from mongodb)
+              var deliveryDateFromMongo =(value.deliveryDate).substring(0,10);
+              if(deliveryDateFromMongo == dateJustYearDayAndMonth){
+                $('#questions').append(new Option(value.title));
+              }
+            }
+            else {
+                $('#questions').append(new Option(value.title));
+            }
           }
         });
 
