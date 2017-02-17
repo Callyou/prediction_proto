@@ -39,7 +39,7 @@ app.controller('SelectQuestionController',function($scope,$http){
         ]);
 
         var options = {
-         colors: ['#800080'],
+         colors: ['#800040'],
           width:400,
           legend: { position: 'none' },
           bars: 'vertical', // Required for Material Bar Charts.
@@ -68,7 +68,7 @@ app.controller('SelectQuestionController',function($scope,$http){
         ]);
 
         var options = {
-          colors: ['#FFA500', '#800080'],
+          colors: ['#FFA500', '#800040'],
           title: 'Nombre de réponses'
         };
 
