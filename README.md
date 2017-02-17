@@ -56,39 +56,143 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
     - messagesdone.html
       - messagesdonedetails.html
 
-## html :
-- messageList.html
-```sh
-      <div class="panel-body" style="overflow-y:scroll">
-        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example1">
-            <tbody id="table">
-                <td>id</td>
-                <td>Date de création</td>
-                <td>Date d échéance </td>
-                <td>Titre</td>
-                <tr ng-repeat="message in messages">
-                      <td>{{message._id}}</td>
-                      <td>{{message.dueDate}}</td>
-                      <td>{{message.title}}</td>
-                </tr>
-            </tbody>
-          </table>
-        </div>
-```
+## html : Les fichiers html se trouvent dans prediction_proto > client> interfacepred > pages.
 - index.html
-- dashboard.html
+- dashboard.html : C'est dans cette vue qu'on gére les vignettes messages en cours, messages estimés et retour sur prédiction de la page d'acceuil.
 ```sh
-      
+<div class="row">
+    <a ng-href="#/messagelist?messageType=messagewithoutdelivery">
+    <div class="col-lg-4 col-md-8">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-xs-3">
+              <i class="fa fa-cogs fa-4x" aria-hidden="true"></i>
+            </div>
+            <div class="col-xs-9 text-right">
+              <div class="huge">
+                {{messagewithoutdelivery.length}}
+              </div>
+              <div>Messages en cours</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+            <span class="pull-left">Voir détails</span>
+            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+            <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+	 </a>
 ```
-- messagessent.html
-- messagessentdetails.html
-- messagesdone.html
-- messagesdonedetails.html
+- messageList.html : c'est ici qu'on gére l'affichage des message en cours
+```sh
+<div class="panel-body">
+  <thead>
+    <tr>
+    <th ng-click="orderByMe('id')">id <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+    </th>
+    <th ng-click="orderByMe('creationDate')">Date de création <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+    </th>
+    <th ng-click="orderByMe('dueDate')">Date d échéance <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+    </th>
+    <th ng-click="orderByMe('title')">Titre <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+    </th>
+  </tr>
+</thead>
+<tbody id="table" ng-repeat="message in messages | filter:search | orderBy:myOrderBy| limitTo:quantity ">
+    <tr>
+      <td><a ng-href="#/message/{{message._id}}">{{message._id}}</a></td>
+      <td>{{message.creationDate | date:'dd/MM/yyyy'}}</td>
+      <td>{{message.dueDate | date:'dd/MM/yyyy'}}</td>
+      <td>{{message.title}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+```
+- messageListdone.html : Ici on affiche l'ensemble des messages qui ont été estimés.
+
+```sh
+<div class="panel-body">
+  <thead>
+    <tr>
+    <th ng-click="orderByMe('messageId')">id <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+    </th>
+    <th ng-click="orderByMe('creationDate')">Date de création <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+    </th>
+    <th ng-click="orderByMe('dueDate')">Date d'échéance <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+    </th>
+    <th ng-click="orderByMe('deliveryDate')">Date d'estimation <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+    </th>
+    <th ng-click="orderByMe('title')">Titre <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+    </th>
+  </tr>
+</thead>
+<tbody id="table" ng-repeat="message in messages | filter:search | orderBy:myOrderBy| limitTo:quantity ">
+    <tr>
+      <td><a ng-href="#/message/{{message._id}}">{{message.messageId}}</a></td>
+      <td>{{message.creationDate | date:'dd/MM/yyyy'}}</td>
+      <td>{{message.dueDate | date:'dd/MM/yyyy'}}</td>
+      <td>{{message.deliveryDate | date:'dd/MM/yyyy'}}</td>
+      <td>{{message.title}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+```
+- messageListDoneFeedback.html : Ici on affiche les messages estimés qui dont le client n'a pas encore effectué un retour.
+```sh
+<div class="panel-body">
+  <thead>
+    <tr>
+      <th ng-click="orderByMe('id')">id <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+      </th>
+      <th ng-click="orderByMe('creationDate')">Date de création<i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+      </th>
+      <th ng-click="orderByMe('dueDate')">Date d'échéance <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+      </th>
+      <th ng-click="orderByMe('title')">Titre <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+      </th>
+      <th ng-click="orderByMe('estimation')">Estimation <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+      </th>
+      <th ng-click="orderByMe('content')">Commentaires <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+      </th>
+      <th ng-click="orderByMe('realNb')">Nombre d'entrée réel <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+    </tr>
+  </thead>
+  <tbody id="table" ng-repeat="message in messages | filter:search | orderBy:myOrderBy| limitTo:quantity ">
+    <tr>
+      <td><a ng-href="#/message/{{message._id}}">{{message._id}}</a></td>
+      <td>{{message.creationDate | date:'dd/MM/yyyy'}}</td>
+      <td>{{message.dueDate | date:'dd/MM/yyyy'}}</td>
+      <td>{{message.title}}</td>
+      <td>{{message.estimation}}</td>
+      <td>
+        <input type="text" name="subject"
+        placeholder="{{message.feedBack.content}}"
+        class="contact-subject form-control"
+        style="width: 200px; height: 100px; text-align : center" id="contact-subject"
+        ng-model="message.feedBack.content"> </td>
+      <td >
+        <input type="number" name="nombre" value="0" ng-model="message.feedBack.realNb">
+        <menu type="toolbar"> </td>
+      <td >
+        <button class="btn btn-danger" ng-click="updateMessage(message._id)">
+          Envoyer</button></td>
+      </tr>
+    </tr>
+  </tbody>
+</table>
+</div>
+```
+- messagesdonedetails.html : Ici on gére l'affichage du détail des messages.
 
 # Back end : le dossier “Server “
 
 Le dossier Server contient tout le back-end  de l’application. Il inclut deux fichiers :
- - Connexion.js 
+ - Connexion.js
  - calculEstimation.js
 
 ## le fichier : Connexion.js
@@ -99,7 +203,7 @@ L’application est lancé par ce fichier. Il contient la connexion avec la base
 var mongodb= require('mongodb'); // chargement du module mongo par node
 var url = 'mongodb://localhost:27017/miageTest'; // le chemin vers la base de données Mongo
 MongoClient.connect(url, function (err, db) {
-  // Récupère les collections (client et message) par un get 
+  // Récupère les collections (client et message) par un get
   // Insère dans les collections (client et message) par un get  
                                           }
 ```
@@ -127,10 +231,8 @@ db.collection('client',function(err,
 ```
 ## le fichier : calculEstimation.js
 
-Ce fichier contient deux fonctions : 
+Ce fichier contient deux fonctions :
 La fonction de prédiction : calculEstimation  qui pour etre changer par le doctorant
 > - La fonction est appelé dans le fichier connexion.js pour l’insertion de la propriété “estimation” .
     La fonction de calcul de taux de d’erreur calculées à partir du nombre réel retourner pour le client et l’estimation (la prédiction)
-> - La fonction est appelé dans le fichier connexion.js pour l’insertion de la propriété “succesRate” 
-
-
+> - La fonction est appelé dans le fichier connexion.js pour l’insertion de la propriété “succesRate”
