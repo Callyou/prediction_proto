@@ -9,23 +9,26 @@
       <tr>
         <th ng-click="orderByMe('id')">id <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
         </th>
-        <th ng-click="orderByMe('creationDate')">Date de création <i  aria-hidden="true" align="right"></i>
+        <th ng-click="orderByMe('creationDate')">Date de création<i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
         </th>
-        <th ng-click="orderByMe('dueDate')">Date d'échéance <i aria-hidden="true" align="right"></i>
+        <th ng-click="orderByMe('dueDate')">Date d'échéance <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
         </th>
-        <th ng-click="orderByMe('title')">Titre <i  aria-hidden="true" align="right"></i>
+        <th ng-click="orderByMe('title')">Titre <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
         </th>
-        <th ng-click="orderByMe('content')">Commentaires <i  aria-hidden="true" align="right"></i>
+        <th ng-click="orderByMe('estimation')">Estimation <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
         </th>
-        <th ng-click="orderByMe('realNb')">Nombre d'entrée réel <i  aria-hidden="true" align="right"></i>
+        <th ng-click="orderByMe('content')">Commentaires <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
+        </th>
+        <th ng-click="orderByMe('realNb')">Nombre d'entrée réel <i class="fa fa-arrows-v" aria-hidden="true" align="right"></i>
       </tr>
     </thead>
     <tbody id="table" ng-repeat="message in messages | filter:search | orderBy:myOrderBy| limitTo:quantity ">
       <tr>
         <td><a ng-href="#/message/{{message._id}}">{{message._id}}</a></td>
-        <td>{{message.creationDate}}</td>
-        <td>{{message.dueDate}}</td>
-        <td>{{message.title}} + {{message.answer.stat.total}}</td>
+        <td>{{message.creationDate | date:'dd/MM/yyyy'}}</td>
+        <td>{{message.dueDate | date:'dd/MM/yyyy'}}</td>
+        <td>{{message.title}}</td>
+        <td>{{message.estimation}}</td>
         <td>
           <input type="text" name="subject"
           placeholder="{{message.feedBack.content}}"
@@ -36,15 +39,8 @@
           <input type="number" name="nombre" value="0" ng-model="message.feedBack.realNb">
           <menu type="toolbar"> </td>
         <td >
-          <button class="btn btn-primary" ng-click="edit(message._id)">
-            Editer</button></td>
-        <td >
           <button class="btn btn-danger" ng-click="updateMessage(message._id)">
-            Envoyer MaJ</button></td>
-        <td>
-          <button class="btn btn-danger" ng-click="remove(message._id)">
-            Effacer</button></td>
-        </tr>
+            Envoyer</button></td>
         </tr>
       </tr>
     </tbody>

@@ -12,12 +12,12 @@ app.config(['$routeProvider',
         switch ($routeParams.messageType) {
           case 'messagewithoutdelivery':
               $scope.messages = messages.filter(function(lm){
-                return lm.deliveryDate== null;
+                return lm.answer == null;
               });
             break;
           case 'messagewithdelivery':
               $scope.messages = messages.filter(function(lm){
-                return lm.deliveryDate !== null;
+                return lm.answer !== null;
               });
             break;
           case 'messagewithcontent':
@@ -83,7 +83,7 @@ app.service('loggedClient', function( $http, $location, $route ) {
 app.controller('MessageViewDetailsCtrl', function($scope, $http, $routeParams, loggedClient) {
  $scope.message = loggedClient.getMessages().filter(function(lm){return lm._id == $routeParams._id;})[0];
  $scope.parseFloat = parseFloat;
-$scope.messages = loggedClient.getMessages();
+// $scope.messages = loggedClient.getMessages();
 // $scope.parJson = function (json) {
 //    return angular.fromJson(json);
 // }
@@ -154,11 +154,11 @@ app.controller('dashboardController', function($location, $scope, $routeParams, 
   $scope.messages = loggedClient.getMessages();
 
   $scope.messagewithoutdelivery = $scope.messages.filter(function(lm){
-    return lm["deliveryDate "] == null;
+    return lm.answer == null;
   });
 
   $scope.messagewithdelivery = $scope.messages.filter(function(lm){
-    return lm["deliveryDate "] != null;
+    return lm.answer !== null;
   });
 
   $scope.messagewithcontent = $scope.messages.filter(function(lm) {
