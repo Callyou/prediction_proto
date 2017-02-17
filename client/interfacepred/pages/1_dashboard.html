@@ -4,14 +4,14 @@
   </div>
   <!-- /.col-lg-12 -->
   <!-- /.row -->
-  <div>total messages: {{messages.length}} - <a ng-href="#/messagelist?messages={{messages}}"> voir les messages </a> </div>
+  <div><label><h3>total messages:</h3></label> {{messages.length}} - <a ng-href="#/messagelist?messages={{messages}}"> voir les messages </a> </div>
   <div class="row">
     <div class="col-lg-4 col-md-8">
       <div class="panel panel-primary">
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-3">
-              <i class="fa fa-comments fa-5x"></i>
+              <i class="fa fa-cogs" aria-hidden="true"></i>
             </div>
             <div class="col-xs-9 text-right">
               <div class="huge">
@@ -37,7 +37,7 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-3">
-              <i class="fa fa-comments fa-5x"></i>
+             <i class="fa fa-check-square-o" aria-hidden="true"></i> 
             </div>
             <div class="col-xs-9 text-right">
               <div class="huge" >{{messagewithdelivery.length}}</div>
@@ -60,7 +60,7 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-3">
-              <i class="fa fa-comments fa-5x"></i>
+             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
             </div>
             <div class="col-xs-9 text-right">
               <div class="huge">{{messagewithcontent.length}}</div>
