@@ -20,8 +20,8 @@
 	<tbody id="table" ng-repeat="message in messages | filter:search | orderBy:myOrderBy| limitTo:quantity ">
 			<tr>
 				<td><a ng-href="#/message/{{message._id}}">{{message._id}}</a></td>
-				<td>{{message.creationDate}}</td>
-				<td>{{message.dueDate}}</td>
+				<td>{{message.creationDate | date:'dd/MM/yyyy'}}</td>
+				<td>{{message.dueDate | date:'dd/MM/yyyy'}}</td>
 				<td>{{message.title}}</td>
 			</tr>
 		</tbody>
