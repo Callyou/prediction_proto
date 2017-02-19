@@ -3,9 +3,11 @@ app.controller('SelectQuestionController',function($scope,$http){
   var ques;
   var clientid;
 
+  
   $("#questions").change(function(){
 
 
+ 
     clientid= $("#champcaché").val();
     ques= $("#questions").val();
     $http.get("/message").success(function(response){
@@ -14,14 +16,24 @@ app.controller('SelectQuestionController',function($scope,$http){
 
       $.each( response, function( key, value ) {
         if( value.clientId==clientid && value.title==ques){
-            $("#retourclient").text(value.feedBack.hasOwnProperty('realNb') ? value.feedBack.realNb : "non renseigné");
-             $("#estimation").text(value.hasOwnProperty('estimation') ? value.estimation : "non renseigné");
-             alert('title : ' + value.title);
-             console.log(value.feedBack);
-             
-             $("#tauxerreur").text(value.hasOwnProperty('successRate') ? value.successRate : "non renseigné");
-     
-            google.charts.load('current', {'packages':['bar','corechart']});
+
+          $("#estimation").text(value.hasOwnProperty('estimation') ? value.estimation : "non renseigné");
+          $("#tauxerreur").text(value.hasOwnProperty('successRate') ? value.successRate : "non renseigné");
+          $("#retourclient").text(value.hasOwnProperty('feedBack') ? value.feedBack.realNb : "non renseigné");
+
+          if(value.hasOwnProperty('answer')== false)
+          {
+             $(".nonrenseigne").show();
+             $("#top_x_div").hide();
+             $("#donutchart").hide();
+    
+            
+    }else {
+       $(".nonrenseigne").hide();
+        $("#top_x_div").show();
+             $("#donutchart").show();
+
+     google.charts.load('current', {'packages':['bar','corechart']});
             google.charts.setOnLoadCallback(drawStuff);
 
             function drawStuff() {
@@ -36,9 +48,9 @@ app.controller('SelectQuestionController',function($scope,$http){
                colors: ['#800040'],
                width:400,
                legend: { position: 'none' },
-          bars: 'vertical', // Required for Material Bar Charts.
-          axes: {
-            x: {
+                   bars: 'vertical', // Required for Material Bar Charts.
+                   axes: {
+                    x: {
               0: { side: 'top', label: 'Nombre de messages'} // Top x-axis.
             }
           },
@@ -69,9 +81,11 @@ app.controller('SelectQuestionController',function($scope,$http){
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
         chart.draw(data, options);
       }
-}
+
+    }
+  }
 });
-})
-$('#divquestion').show();
-})
+    })
+    $('#divquestion').show();
+  })
 });

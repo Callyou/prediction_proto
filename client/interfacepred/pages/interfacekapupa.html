@@ -261,10 +261,11 @@ $(document).ready(function(){
   $('#question').hide();
   $('.page2').hide();
   $("#champcaché").hide();
-  ViderLaListeDesQuestions();
+  $(".nonrenseigne").hide();
+    ViderLaListeDesQuestions();
 
 
-  $('#multipleSelect').on('change', function(){
+  $('#multipleSelect').on('click', function(){
     showClientList();
   });
 

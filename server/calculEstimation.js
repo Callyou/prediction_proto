@@ -1,3 +1,4 @@
+
 // fonction de calcul d'estimation
 function calculEstimation(msgWeb,msgMob,RepPos,RepNeg){
   var totalRep=parseInt(RepPos)+parseInt(RepNeg);
@@ -6,6 +7,15 @@ function calculEstimation(msgWeb,msgMob,RepPos,RepNeg){
   return parseInt(estimation);
 }
 
-function TauxErreur(NbR,Estim){
- return ((parseInt(NbR)-parseInt(Estim))/parseInt(NbR));
+function sucessRate(NbR,Estim){
+	var ErreurRate=(parseInt(NbR)-parseInt(Estim))/parseInt(NbR);
+	var sucessRate=1-roundDecimal(ErreurRate,2);
+ return sucessRate;
+}
+
+
+function roundDecimal(nombre, precision){
+    var precision = precision || 2;
+    var tmp = Math.pow(10, precision);
+    return Math.round( nombre*tmp )/tmp;
 }
