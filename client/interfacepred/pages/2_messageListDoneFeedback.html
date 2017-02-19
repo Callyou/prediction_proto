@@ -1,5 +1,5 @@
 <div class="panel-body">
-  <p><strong>Recherche <input type="text" ng-model="search"></strong><i class="glyphicon glyphicon-search"></i></p>
+<style type="text/css">.ng-invalid { border-color: #B94A48; }</style>  <p><strong>Recherche <input type="text" ng-model="search"></strong><i class="glyphicon glyphicon-search"></i></p>
   <p><strong>Nombre de lignes au total : {{messages.length}}</strong></p>
   <p><strong>Veuillez choisir le nombre de lignes à afficher </strong><input type="text" ng-model="quantity"></p></p>
 
@@ -30,17 +30,22 @@
         <td>{{message.title}}</td>
         <td>{{message.estimation}}</td>
         <td>
-          <input type="text" name="subject"
+        <form name="ajoutUtilisateur" ng-submit="validation()">
+          <div class="form-group">
+          <input type="text" class="form-control" name="subject"
           placeholder="{{message.feedBack.content}}"
           class="contact-subject form-control"
           style="width: 200px; height: 100px; text-align : center" id="contact-subject"
-          ng-model="message.feedBack.content"> </td>
-        <td >
+          ng-model="message.feedBack.content" required> </td>
+        <td ></div>
+          <div class="form-group">
           <input type="number" name="nombre" value="0" ng-model="message.feedBack.realNb">
-          <menu type="toolbar"> </td>
+          <menu type="toolbar"> </td></div>
+
         <td >
-          <button class="btn btn-danger" ng-click="updateMessage(message._id)">
+          <button class="btn btn-danger" ng-click="updateMessage(message._id)" required>
             Envoyer</button></td>
+        </form>
         </tr>
       </tr>
     </tbody>

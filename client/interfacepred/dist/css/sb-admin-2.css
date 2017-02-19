@@ -10,6 +10,15 @@ padding: 3px;
 box-sizing: border-box;
 }*/
 
+form {
+    width: 300px;
+}
+
+ng-message {
+    display: block;
+    color : red
+}
+
 body {
   background-color: #f8f8f8;
 }

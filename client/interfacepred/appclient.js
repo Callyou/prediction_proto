@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute','angular.morris']);
+var app = angular.module('myApp', ['ngRoute','angular.morris','ngMessages']);
 
 app.config(['$routeProvider',
   function($routeProvider) {
@@ -33,6 +33,19 @@ app.config(['$routeProvider',
           $scope.myOrderBy = x;
         }
       }
+      $scope.validation = function Controleur($scope) {
+		  $scope.message = '';
+		  $scope.soumission = function (valid) {
+		    if(valid) {
+		    	$scope.messageClass='alert-success';
+		    	$scope.message = 'Merci ' + $scope.user.nom + ' votre inscription est validée !';
+		    }
+		    else {
+		    	$scope.messageClass='alert-danger';
+		    	$scope.message = 'Désolé mais il y a des données non valides !';
+		    }
+		  };
+		};
     })
     .when('/messagelistdone', {
       templateUrl: '/public/interfacepred/pages/2_messageListDone.html',
@@ -62,6 +75,7 @@ app.config(['$routeProvider',
           $scope.myOrderBy = x;
         }
       }
+
     }).when('/messagelistdonefeedback', {
       templateUrl: '/public/interfacepred/pages/2_messageListDoneFeedback.html',
       controller : 'MessageViewCtrl'
