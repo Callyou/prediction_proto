@@ -33,19 +33,19 @@ app.config(['$routeProvider',
           $scope.myOrderBy = x;
         }
       }
-      $scope.validation = function Controleur($scope) {
-		  $scope.message = '';
-		  $scope.soumission = function (valid) {
-		    if(valid) {
-		    	$scope.messageClass='alert-success';
-		    	$scope.message = 'Merci ' + $scope.user.nom + ' votre inscription est validée !';
-		    }
-		    else {
-		    	$scope.messageClass='alert-danger';
-		    	$scope.message = 'Désolé mais il y a des données non valides !';
-		    }
-		  };
-		};
+    //   $scope.validation = function Controleur($scope) {
+		//   $scope.message = '';
+		//   $scope.soumission = function (valid) {
+		//     if(valid) {
+		//     	$scope.messageClass='alert-success';
+		//     	$scope.message = 'Merci ' + $scope.user.nom + ' votre inscription est validée !';
+		//     }
+		//     else {
+		//     	$scope.messageClass='alert-danger';
+		//     	$scope.message = 'Désolé mais il y a des données non valides !';
+		//     }
+		//   };
+		// };
     })
     .when('/messagelistdone', {
       templateUrl: '/public/interfacepred/pages/2_messageListDone.html',
