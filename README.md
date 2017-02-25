@@ -50,15 +50,17 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
  ## Architecture :
 
 - index.html
-  - dashboard.html
-    - messagessent.html
-      - messagessentdetails.html
-    - messagesdone.html
-      - messagesdonedetails.html
+  - 1_dashboard.html
+    - 2_messagesList.html
+      - 3_messagesdetails.html
+    - 2_messagesListdone.html
+    - 2_messagesListdoneFeedback.html
 
 ## html : Les fichiers html se trouvent dans prediction_proto > client> interfacepred > pages.
-- index.html
-- dashboard.html : C'est dans cette vue qu'on gére les vignettes messages en cours, messages estimés et retour sur prédiction de la page d'acceuil.
+
+- index.html : est la vue dans laquelle on gére l'affichage de la page d'acceuil client.
+
+- 1_dashboard.html : C'est dans cette vue qu'on gére les vignettes messages en cours, messages estimés et retour sur prédiction de la page d'acceuil.
 ```sh
 <div class="row">
     <a ng-href="#/messagelist?messageType=messagewithoutdelivery">
@@ -86,7 +88,7 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
     </div>
 	 </a>
 ```
-- messageList.html : c'est ici qu'on gére l'affichage des message en cours
+-2_messageList.html : c'est ici qu'on gére l'affichage des message en cours
 ```sh
 <div class="panel-body">
   <thead>
@@ -112,7 +114,7 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
 </table>
 </div>
 ```
-- messageListdone.html : Ici on affiche l'ensemble des messages qui ont été estimés.
+-2_messageListdone.html : Ici on affiche l'ensemble des messages estimés.
 
 ```sh
 <div class="panel-body">
@@ -142,7 +144,7 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
 </table>
 </div>
 ```
-- messageListDoneFeedback.html : Ici on affiche les messages estimés qui dont le client n'a pas encore effectué un retour.
+-2_messageListDoneFeedback.html : Ici on affiche les messages estimés dont le client n'a pas encore effectué un retour.
 ```sh
 <div class="panel-body">
   <thead>
@@ -187,7 +189,7 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
 </table>
 </div>
 ```
-- messagesdonedetails.html : Ici on gére l'affichage du détail des messages.
+-3_messagesdetails.html : Ici on gére l'affichage du détail des messages.
 
 # Back end : le dossier “Server “
 
