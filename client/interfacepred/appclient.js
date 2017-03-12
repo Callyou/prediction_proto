@@ -142,6 +142,7 @@ app.controller('MessageViewCtrl', function($scope, $http, $routeParams, loggedCl
   });
 
   $scope.updateMessage = function(_id) {
+    console.log($scope.form)
     var msg = $scope.messages.find( function(elem) { return _id == elem._id });
     loggedClient.updateMessage(msg, function(res, messages) {
 
