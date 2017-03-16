@@ -1,3 +1,6 @@
+-# les liens pour se connecter à l'application:
+  - pour se connecter à l'interface kapupa : http://localhost:8888/public/interfacepred/pages/interfacekapupa.html
+
 -# prediction_proto Single Page App
 ## Connexion à la base de données MongoDB via le serveur NodeJs
 - installer MongoDB
