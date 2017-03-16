@@ -1,7 +1,7 @@
 app.controller('dashboardController', function($location, $scope, $routeParams, loggedClient) {
   $scope.currentClient = loggedClient.getClient();
   $scope.messages = loggedClient.getMessages();
-console.log("coucouc je suis dans dashboard", $scope.messages)
+console.log("coucou je suis dans dashboard", $scope.messages)
   $scope.messagewithoutdelivery = $scope.messages.filter(function(lm){
     return (lm.answer != null && lm.answer.stat == null) | lm.answer == null;
   });
