@@ -3,11 +3,11 @@ app.controller('SelectQuestionController',function($scope,$http){
   var ques;
   var clientid;
 
-  
+
   $("#questions").change(function(){
 
 
- 
+
     clientid= $("#champcaché").val();
     ques= $("#questions").val();
     $http.get("/message").success(function(response){
@@ -17,17 +17,17 @@ app.controller('SelectQuestionController',function($scope,$http){
       $.each( response, function( key, value ) {
         if( value.clientId==clientid && value.title==ques){
 
-          $("#estimation").text(value.hasOwnProperty('estimation') ? value.estimation : "non renseigné");
-          $("#tauxerreur").text(value.hasOwnProperty('successRate') ? value.successRate : "non renseigné");
-          $("#retourclient").text(value.hasOwnProperty('feedBack') ? value.feedBack.realNb : "non renseigné");
+          $("#estimation").text(value.hasOwnProperty('estimation') ? value.estimation + " Couverts" : "non renseigné");
+          $("#tauxerreur").text(value.hasOwnProperty('successRate') ? value.successRate + " %" : "non renseigné");
+          $("#retourclient").text(value.hasOwnProperty('feedBack') ? value.feedBack.realNb + " Couverts" : "non renseigné");
 
           if(value.hasOwnProperty('answer')== false)
           {
              $(".nonrenseigne").show();
              $("#top_x_div").hide();
              $("#donutchart").hide();
-    
-            
+
+
     }else {
        $(".nonrenseigne").hide();
         $("#top_x_div").show();

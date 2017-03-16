@@ -2,20 +2,9 @@ app.controller('FilterController',function($scope,$http){
     ViderLaListeDesQuestions();
     $("#multipleSelect").on('change', function(){
       if($("#deliverydate").val()){
-
-        // s'il y a une date déjà choisi
         functionFilterByDate($scope, $http);
-
-        // affiche de message lorsque la liste des clients est vide
-        // var tbody = $('#tbodyFiltredByDate');
-        // if (tbody.children().length == 0) {
-        //     alert(tbody.children().length);
-        //     afficherModalText();
-        // }
       }
       else {
-
-        // s'il n'y a pas une date (filtre que par type des clients)
         $("#dataTables-example2").hide();
         $("#dataTables-example").show();
       }
@@ -23,12 +12,6 @@ app.controller('FilterController',function($scope,$http){
 
     $("#deliverydate").change(function(){
         functionFilterByDate($scope, $http);
-        // affiche de message lorsque la liste des clients est vide
-        // var tbody = $('#tbodyFiltredByDate');
-        // if (tbody.children().length == 0) {
-        //     alert(tbody.children().length);
-        //     afficherModalText();
-        // }
     })
 })
 

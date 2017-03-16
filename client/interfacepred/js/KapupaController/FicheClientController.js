@@ -8,9 +8,7 @@ app.controller('FicheClientController',function($scope,$http){
       ViderLaListeDesQuestions();
       var jsonclient=JSON.stringify(client);
 
-      console.log(jsonclient);
-
-       $(".nom").text(client.hasOwnProperty('name') ? client.name : "non renseigné");
+      $(".nom").text(client.hasOwnProperty('name') ? client.name : "non renseigné");
 
       $(".ville").text(client.hasOwnProperty('city') ? client.city : "non renseigné");
 
