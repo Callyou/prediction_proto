@@ -97,6 +97,7 @@ db.collection('message',function(err,collection){
                             {$set:{estimation:
                                   calculEstimation(messages[i].nbPull.websitePull,messages[i].nbPull.mobilePull,messages[i].answer.stat.positive,messages[i].answer.stat.positive)}});
           collection.update({_id:messages[i]._id},{$set:{deliveryDate: new Date()}});
+		  console.log('Estimation est bien calculée');
         }
         else
         {
@@ -129,7 +130,7 @@ db.collection('message',function(err,collection){
 
           collection.update({_id:messages[i]._id},
                             {$set:{successRate:sucessRate(messages[i].feedBack.realNb,messages[i].estimation) }});
-         
+         console.log('Succes rate est bien calculée');
         }
         else
         {
