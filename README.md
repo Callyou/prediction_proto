@@ -1,4 +1,4 @@
-# les liens pour se connecter à l'application:
+# Les liens pour se connecter à l'application:
   - pour se connecter à l'interface kapupa : http://localhost:8888/public/interfacepred/pages/interfacekapupa.html
   - pour se connecter à l'interface kapupa : http://localhost:8888/public/interfacepred/pages/0_interfaceclient.html
 
@@ -197,6 +197,73 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
 -3_messagesdetails.html : Ici on gére l'affichage du détail des messages.
 
 ## Controleur : ./client/interfacepred/js/ClientController/
+### dashboard.js :
+Permet de creer une vue dynamic en ajoutant des fonctions de filtres des messages :
+- Messages en cours : si le champs `answer` ou le sous-champs `answer.stat` est NUL, alors est un message en cours, voir `1_dashboard.html` ligne 9
+```sh
+app.controller('dashboardController', function($location, $scope, $routeParams, loggedClient) {
+...
+  $scope.messagewithoutdelivery = $scope.messages.filter(function(lm){
+    return (lm.answer != null && lm.answer.stat == null) | lm.answer == null;
+  });
+...
+}
+
+```
+
+- Messages estimés : si le champs `answer` ou le sous-champs `answer.stat` n'est PAS NUL, alors est un message estimé, voir `1_dashboard.html` ligne 37
+```sh
+app.controller('dashboardController', function($location, $scope, $routeParams, loggedClient) {
+...
+  $scope.messagewithdelivery = $scope.messages.filter(function(lm){
+    return lm.answer != null && lm.answer.stat;
+  });
+...
+}
+```
+
+- Retours sur prédiction : si le champs `feedback` n'est PAS NUL, alors est un message qui demande une prédiction, voir `1_dashboard.html` ligne 62
+```sh
+app.controller('dashboardController', function($location, $scope, $routeParams, loggedClient) {
+...
+  $scope.messagewithcontent = $scope.messages.filter(function(lm) {
+    return lm.feedBack == null
+  });
+...
+}
+```
+
+- Graphe : utilise morris chart pour AngularJS, voir `1_dashboard.html` ligne 95 à 117
+```sh
+  $scope.data = $scope.messages.filter(function(lm) { return lm.feedBack != null })
+  .sort(function(a, b) {
+    a = new Date(a.dueDate);
+    b = new Date(b.dueDate);
+    return a-b;
+}).slice(-5).map(function(elem) {
+    return {
+      y: elem.title,
+      a: elem.feedBack.realNb,
+      b: elem.estimation
+    }
+  });
+```
+
+### interfaceclient.js
+```sh
+app.service('loggedClient', function( $http, $location, $route ) {...}
+
+```
+
+### messagedetails.js
+```sh
+app.controller('MessageViewDetailsCtrl', function($scope, $http, $routeParams, loggedClient) {...}
+```
+
+### messagelistdonefeedback.js
+```sh
+app.controller('MessageViewCtrl', function($scope, $http, $routeParams, loggedClient) {...}
+```
 
 # Back end : le dossier “Server “
 
