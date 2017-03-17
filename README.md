@@ -196,9 +196,17 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
 ```
 -3_messagesdetails.html : Ici on gére l'affichage du détail des messages.
 
-## Controleur : ./client/interfacepred/js/ClientController/
+## Controleur interface client :
+### ./client/interfacepred/appclient.js
+Module permettant de créer une vue dynamique en appelant les différent controleur pour chaque page html (route) :
+```sh
+var app = angular.module('myApp', ['ngRoute','angular.morris','ngMessages']);
+app.config(['$routeProvider',...)
+```
+
+### ./client/interfacepred/js/ClientController/
 ### dashboard.js :
-Permet de creer une vue dynamic en ajoutant des fonctions de filtres des messages :
+Permet de créer une vue dynamique en ajoutant des fonctions de filtres des messages :
 - Messages en cours : si le champs `answer` ou le sous-champs `answer.stat` est NUL, alors est un message en cours, voir `1_dashboard.html` ligne 9
 ```sh
 app.controller('dashboardController', function($location, $scope, $routeParams, loggedClient) {
@@ -208,7 +216,6 @@ app.controller('dashboardController', function($location, $scope, $routeParams, 
   });
 ...
 }
-
 ```
 
 - Messages estimés : si le champs `answer` ou le sous-champs `answer.stat` n'est PAS NUL, alors est un message estimé, voir `1_dashboard.html` ligne 37
@@ -250,17 +257,20 @@ app.controller('dashboardController', function($location, $scope, $routeParams, 
 ```
 
 ### interfaceclient.js
+Permet de créer une vue dynamique en ajoutant des fonctions de filtres par client pour `0_interfaceclient.html`:
 ```sh
 app.service('loggedClient', function( $http, $location, $route ) {...}
-
+app.controller('navbarController', function($scope, $location, $http, loggedClient) {...}
 ```
 
 ### messagedetails.js
+Permet de créer une vue dynamique en ajoutant des fonctions de filtres par message par client `loggedClient` pour en afficher les details, voir `3_messageDetails.html`:
 ```sh
 app.controller('MessageViewDetailsCtrl', function($scope, $http, $routeParams, loggedClient) {...}
 ```
 
 ### messagelistdonefeedback.js
+Permet de créer une vue dynamique en ajoutant des fonctions de filtres par message par client `loggedClient` pour en afficher les details et pouvoir faire des updates des messages pour le retour client, , voir `2_messageListDoneFeedback.html`:
 ```sh
 app.controller('MessageViewCtrl', function($scope, $http, $routeParams, loggedClient) {...}
 ```
