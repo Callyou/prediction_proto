@@ -1,8 +1,9 @@
--# les liens pour se connecter à l'application:
+# les liens pour se connecter à l'application:
   - pour se connecter à l'interface kapupa : http://localhost:8888/public/interfacepred/pages/interfacekapupa.html
   - pour se connecter à l'interface kapupa : http://localhost:8888/public/interfacepred/pages/0_interfaceclient.html
 
--# prediction_proto Single Page App
+# prediction_proto Single Page App
+
 ## Connexion à la base de données MongoDB via le serveur NodeJs
 - installer MongoDB
   - faire un mongorestore de la base dump, coller dans le `bin/` où MongoDB a été installé, le répertoire dump dézippé.
@@ -53,16 +54,16 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
  # Interface client :
  ## Architecture :
 
-- index.html
+- 0_interfaceclient.html
   - 1_dashboard.html
     - 2_messagesList.html
       - 3_messagesdetails.html
     - 2_messagesListdone.html
     - 2_messagesListdoneFeedback.html
 
-## html : Les fichiers html se trouvent dans prediction_proto > client> interfacepred > pages.
+## html : Les fichiers html se trouvent dans prediction_proto > client> interfacepred > pages
 
-- index.html : est la vue dans laquelle on gére l'affichage de la page d'acceuil client.
+-0_interfaceclient.html : est la vue dans laquelle on gére l'affichage de la page d'acceuil client.
 
 - 1_dashboard.html : C'est dans cette vue qu'on gére les vignettes messages en cours, messages estimés et retour sur prédiction de la page d'acceuil.
 ```sh
@@ -118,7 +119,7 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
 </table>
 </div>
 ```
--2_messageListdone.html : Ici on affiche l'ensemble des messages estimés.
+-2_messageListdone.html : ici on affiche l'ensemble des messages estimés.
 
 ```sh
 <div class="panel-body">
@@ -148,7 +149,7 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
 </table>
 </div>
 ```
--2_messageListDoneFeedback.html : Ici on affiche les messages estimés dont le client n'a pas encore effectué un retour.
+-2_messageListDoneFeedback.html : ici on affiche les messages estimés dont le client n'a pas encore effectué un retour.
 ```sh
 <div class="panel-body">
   <thead>
@@ -194,6 +195,8 @@ Aller dans un navigateur web à l'adresse pour voir le contenu de la base affich
 </div>
 ```
 -3_messagesdetails.html : Ici on gére l'affichage du détail des messages.
+
+## Controleur : ./client/interfacepred/js/ClientController/
 
 # Back end : le dossier “Server “
 
