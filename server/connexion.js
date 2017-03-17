@@ -136,7 +136,7 @@ db.collection('message',function(err,collection){
         {
           console.log('Succes rate existe');
         }
-         
+
       }
       else
       {
@@ -181,8 +181,8 @@ db.collection('message',function(err,collection){
     });
     app.post('/message/:id', function (req, res) {
       var id = req.params.id;
-
-      collection.update({_id: id}, req.body);
+      console.log("zaeaeaze", req.body)
+      collection.save({"_id": mongodb.ObjectID(req.body._id)}, req.body);
       res.send(req.body)
     });
     // Récuperation d'un message en copiant son _id : localhost:port/message/_id

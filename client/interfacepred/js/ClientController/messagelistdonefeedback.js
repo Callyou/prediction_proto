@@ -15,7 +15,7 @@ app.controller('MessageViewCtrl', function($scope, $http, $routeParams, loggedCl
     console.log($scope.form)
     var msg = $scope.messages.find( function(elem) { return _id == elem._id });
     loggedClient.updateMessage(msg, function(res, messages) {
-
+console.log(msg)
       $scope.messages = messages.filter(function(lm) {
         return lm.feedBack == null;
       }).map(function(elem) {
